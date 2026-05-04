@@ -47,7 +47,7 @@ cp "$EXAMPLE" "$CONFIG"
 
 if [ -f "$LOCAL" ]; then
   echo "    Found .env.local — merging secrets into config..."
-  while IFS= read -r line; do
+  while IFS= read -r line || [[ -n "$line" ]]; do
     [[ "$line" =~ ^[[:space:]]*# ]] && continue
     [[ -z "${line// }" ]] && continue
     KEY="${line%%=*}"
