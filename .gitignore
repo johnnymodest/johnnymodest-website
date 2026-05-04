@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — never commit secrets
 .env*
+*.env.local
 
 # vercel
 .vercel
@@ -39,3 +40,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code — whitelist only what's useful
+.claude/*
+!.claude/CLAUDE.md
+!.claude/commands/
+!.claude/commands/**
+.claude.json
+
+# free-claude-code — config contains secrets, runtime files for local debugging only
+.config/free-claude-code/.env
+free-claude-code-proxy.log
+free-claude-code-proxy.pid

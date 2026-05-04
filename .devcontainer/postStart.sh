@@ -1,21 +1,22 @@
 #!/bin/bash
 
-source "$HOME/.local/bin/env"
+export PATH="$HOME/.local/bin:$PATH"
 
 PROXY_DIR="$HOME/free-claude-code"
+CONFIG_FILE="$HOME/.config/free-claude-code/.env"
 LOG_FILE="$HOME/free-claude-code-proxy.log"
 PID_FILE="$HOME/free-claude-code-proxy.pid"
 
 # Check if .env exists and has been configured
-if [ ! -f "$PROXY_DIR/.env" ]; then
-  echo "⚠️  ~/free-claude-code/.env not found. Proxy not started."
-  echo "    Copy .devcontainer/free-claude-code.env.example to ~/free-claude-code/.env and fill in your API key."
+if [ ! -f "$CONFIG_FILE" ]; then
+  echo "⚠️  ~/.config/free-claude-code/.env not found. Proxy not started."
+  echo "    Copy .devcontainer/free-claude-code.env.example to ~/.config/free-claude-code/.env and fill in your API key."
   exit 0
 fi
 
-if grep -q "your-api-key-here" "$PROXY_DIR/.env"; then
-  echo "⚠️  ~/free-claude-code/.env still contains placeholder values. Proxy not started."
-  echo "    Edit ~/free-claude-code/.env and add your real API key."
+if grep -q "your-api-key-here" "$CONFIG_FILE"; then
+  echo "⚠️  ~/.config/free-claude-code/.env still contains placeholder values. Proxy not started."
+  echo "    Edit ~/.config/free-claude-code/.env and add your real API key."
   exit 0
 fi
 
