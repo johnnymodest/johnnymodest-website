@@ -3,6 +3,7 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
+import CursorUnderline from "@/components/CursorUnderline";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -18,8 +19,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Johnny Modest",
-  description: "Zero-nonsense product design, research, and strategy.",
+  title: {
+    template: "%s",
+    default: "Johnny Modest — Zero-nonsense product consulting",
+  },
+  description:
+    "Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $80/hr.",
+  metadataBase: new URL("https://johnnymodest.com"),
 };
 
 export default function RootLayout({
@@ -42,6 +48,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <StickyBar />
+        <CursorUnderline />
       </body>
     </html>
   );
