@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { promises as fs } from "fs";
 import path from "path";
@@ -23,6 +24,32 @@ function parseFrontmatter(raw: string): { fm: Frontmatter; body: string } {
     if (k && rest.length) fm[k.trim()] = rest.join(":").trim();
   }
   return { fm: fm as unknown as Frontmatter, body: match[2] };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const filePath = path.join(
+    process.cwd(),
+    "content/case-studies",
+    `${slug}.mdx`
+  );
+  try {
+    const raw = await fs.readFile(filePath, "utf-8");
+    const { fm } = parseFrontmatter(raw);
+    return {
+      title: `${fm.title} — Johnny Modest`,
+      description: `${fm.client} · ${fm.domain} · ${fm.year}`,
+    };
+  } catch {
+    return {
+      title: "Case Study — Johnny Modest",
+      description: "Selected work, told plainly.",
+    };
+  }
 }
 
 export default async function CaseStudyPage({

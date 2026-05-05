@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About — Johnny Modest",
+  description: "Cross-domain pattern recognition.",
+};
+
 const domains = [
   "01 Developer tools",
   "02 B2B SaaS",

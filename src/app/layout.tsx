@@ -19,8 +19,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Johnny Modest",
-  description: "Zero-nonsense product design, research, and strategy.",
+  title: {
+    template: "%s",
+    default: "Johnny Modest — Zero-nonsense product consulting",
+  },
+  description:
+    "Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $80/hr.",
+  metadataBase: new URL("https://johnnymodest.com"),
 };
 
 export default function RootLayout({
