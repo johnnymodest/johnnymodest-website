@@ -45,6 +45,7 @@ export default function CaseStudyNav() {
           <li key={s.id}>
             <a
               href={`#${s.id}`}
+              className="amber-link"
               onClick={(e) => {
                 e.preventDefault();
                 handleClick(s.id);

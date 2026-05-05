@@ -22,19 +22,19 @@ export default function Footer() {
           <div className="foot__col">
             <h5>Site</h5>
             <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/zero-nonsense">Zero nonsense</Link></li>
-              <li><Link href="/case-studies">Case studies</Link></li>
-              <li><Link href="/about">About</Link></li>
+              <li><Link href="/" className="amber-link">Home</Link></li>
+              <li><Link href="/zero-nonsense" className="amber-link">Zero nonsense</Link></li>
+              <li><Link href="/case-studies" className="amber-link">Case studies</Link></li>
+              <li><Link href="/about" className="amber-link">About</Link></li>
             </ul>
           </div>
 
           <div className="foot__col">
             <h5>Direct</h5>
             <ul>
-              <li><a href="mailto:hello@johnnymodest.com">hello@johnnymodest.com</a></li>
-              <li><Link href="/contact">Brief form</Link></li>
-              <li><a href="https://linkedin.com/in/johnnymodest" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a></li>
+              <li><a href="mailto:hello@johnnymodest.com" className="amber-link">hello@johnnymodest.com</a></li>
+              <li><Link href="/contact" className="amber-link">Brief form</Link></li>
+              <li><a href="https://linkedin.com/in/johnnymodest" target="_blank" rel="noopener noreferrer" className="amber-link">LinkedIn &nearr;</a></li>
             </ul>
           </div>
 

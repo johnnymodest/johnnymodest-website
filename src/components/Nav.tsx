@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const LINKS = [
-  { href: '/case-studies', label: 'Case studies' },
-  { href: '/zero-nonsense', label: 'Zero nonsense' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: "/case-studies", label: "Case studies" },
+  { href: "/zero-nonsense", label: "Zero nonsense" },
+  { href: "/about", label: "About" },
+  //{ href: '/contact', label: 'Contact' },
 ] as const;
 
 export default function Nav() {
@@ -29,21 +29,21 @@ export default function Nav() {
         <button
           className="nav__hamburger"
           aria-expanded={menuOpen}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           onClick={() => setMenuOpen((o) => !o)}
         >
           <span />
           <span />
         </button>
 
-        <div className={`nav__menu${menuOpen ? ' is-open' : ''}`}>
+        <div className={`nav__menu${menuOpen ? " is-open" : ""}`}>
           <div className="nav__links">
             {LINKS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="nav__link"
-                aria-current={pathname === href ? 'page' : undefined}
+                className="nav__link amber-link"
+                aria-current={pathname === href ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
