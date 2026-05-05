@@ -33,9 +33,9 @@
     }
   },
 
-  "forwardPorts": [3000, 8082],
+  "forwardPorts": [3333, 8082],
   "portsAttributes": {
-    "3000": { "label": "Next.js" },
+    "3333": { "label": "Next.js" },
     "8082": { "label": "free-claude-code proxy" }
   }
 }
