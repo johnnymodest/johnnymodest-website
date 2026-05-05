@@ -3,7 +3,7 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
-import CursorUnderline from "@/components/CursorUnderline";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -40,10 +40,11 @@ export default function RootLayout({
     >
       <body>
         <Nav />
-        <main>{children}</main>
+        <PageTransition>
+          <main>{children}</main>
+        </PageTransition>
         <Footer />
         <StickyBar />
-        <CursorUnderline />
       </body>
     </html>
   );
