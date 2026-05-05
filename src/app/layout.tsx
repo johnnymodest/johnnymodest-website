@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import StickyBar from "@/components/StickyBar";
 import PageTransition from "@/components/PageTransition";
+import CursorUnderline from "@/components/CursorUnderline";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -50,6 +51,7 @@ export default function RootLayout({
         </PageTransition>
         <Footer />
         <StickyBar />
+        <CursorUnderline />
       </body>
     </html>
   );
