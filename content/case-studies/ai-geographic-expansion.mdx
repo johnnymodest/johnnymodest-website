@@ -2,70 +2,88 @@
 title: AI-powered geographic expansion
 client: Private Company
 domain: Agriculture
-year: 2024
+year: 2025
 nda: true
 slug: ai-geographic-expansion
+metrics:
+  - value: "~90%"
+    label: "of active users tried an AI feature"
+  - value: ">60%"
+    label: "became regular AI feature users"
+  - value: ">10%"
+    label: "userbase growth from non-US markets, over 90 days"
+pullQuote: "The projected running costs were reasonable."
+cta:
+  eyebrow: "Have a niche product?"
+  title: "Bring me a niche problem you've been circling."
+  primaryLabel: "Send a brief"
+  primaryHref: "/contact"
+  secondaryLabel: "More case studies"
+  secondaryHref: "/case-studies"
 ---
 
 <div id="overview" className="cs-section">
 
-## Overview
+### Overview
 
-An agricultural technology company needed to expand into new geographic markets but had no way to match their product to local conditions — soil types, climate zones, crop varieties — without expensive manual research per region.
+A US-based gardening & farming app with solid crop planning, layout, and management capabilities makes recommenations based on decades of US growing zone data. While reliable, this limited the app's reach to the US.
 
-<div className="metrics">
-  <div className="metric">
-    <div className="metric__num">Majority adoption</div>
-    <div className="metric__label">New-market users within 90 days</div>
-  </div>
-  <div className="metric">
-    <div className="metric__num">Zero</div>
-    <div className="metric__label">Additional marketing spend</div>
-  </div>
-  <div className="metric">
-    <div className="metric__num">New revenue</div>
-    <div className="metric__label">From previously untouched markets</div>
-  </div>
-</div>
+We used AI integrations to expand the app's capabilities internationally, and improve functionality for all users.
 
-<blockquote className="cs-pull">
-  The system continues to run without my involvement.
-</blockquote>
+It was a success.
+
+<Metrics />
 
 </div>
 
 <div id="the-problem" className="cs-section">
 
-## The problem
+### The problem
 
-An agricultural technology company needed to expand into new geographic markets but had no way to match their product to local conditions — soil types, climate zones, crop varieties — without expensive manual research per region.
+The app accepted any location, but its recommendations assumed a US growing zone. A gardener in the Netherlands or New Zealand would need to do research on which US growing zone most closely matches their climate, and could still sometimes get the wrong recommendation.
+
+The client's dataset only covered US zones, with no viable international equivalent. The timeline and budget didn't allow for integrating or building another dataset.
+
+Would we be able to get reliable and consistent recommendations from an AI integration instead?
 
 </div>
 
 <div id="the-approach" className="cs-section">
 
-## The approach
+### The approach
 
-- Mapped the data problem: what do we know, what do we need to infer?
-- Built an AI pipeline matching product capabilities to geographic and agronomic data
-- Designed the user flow so farmers got relevant recommendations without understanding the model
-- Phased rollout: two new markets first to validate, then scaled
-- Instrumented everything: adoption rate, recommendation acceptance, session depth
+I designed three features, each targeting a different moment where growing zone data was involved. I then researched and tested prompting strategies, designed the business logic, and specified the JSON response formats. The LLM would do the heavy lifting in terms of recommendations. The projected running costs were reasonable.
+
+**Location-to-zone mapping.** During the garden setup, gardeners can now select any location in the world. Behind the scenes, the AI maps it to the nearest US growing zone. If no close match exists, the default behavior becomes to defer to AI-powered suggestions for seeding and companion planting as well (see below).
+
+**Seeding date recommendations.** In the planting calendar, gardeners can request an AI-generated optimal seeding date when adding a crop. Besides covering the "no close match" case above, this also addresses a more general nuance where the "optimal" date has passed for the current season, but there are still "good" dates available.
+
+**Companion planting suggestions.** In the garden layout view, gardeners can click any planting and ask what grows well alongside it, and what doesn't. They get suggestions and explanations, calibrated to their growing zone or location.
+
+The engineering was straightforward once the business logic was right. The significant work was in designing a prompting strategy that would produce good and consistent results without making token spend a problem.
 
 </div>
 
+<PullQuote />
+
 <div id="the-outcome" className="cs-section">
 
-## The outcome
+### The outcome
 
-Majority of new-market users adopted the AI-recommended approach within 90 days. Revenue from previously untouched markets materialized without additional marketing spend.
+30 days from idea to beta rollout, with an additional 30 days for calibration and polishing.
+
+Roughly 90% of active users tried an AI feature at least once. Community feedback was mostly positive, with over 60% of users using the features regularly.
+
+With friction reduced for global markets, the userbase achieved double-digit growth within 90 days, without a meaningful increase in marketing spend.
 
 </div>
 
 <div id="what-id-do-differently" className="cs-section">
 
-## What I'd do differently
+### What I'd do differently
 
-Started instrumentation too late. Had adoption data but limited insight into why specific recommendations were accepted or rejected in the first weeks. Wire analytics before launch.
+I would have put more time into more granular analytics: did users then edit the recommended dates? Did they generate them again? Were adopters generally AI-bullish, or was one specific feature important to them?
+
+I'd also invest in a more complete caching and feedback loop. We had to mitigate for LLMs giving different answers to the same question. A better, if more complex approach would be to look at usage signals like rate of acceptance, modification, or ignore. In time, this would create a dataset of validated responses, reducing token costs.
 
 </div>

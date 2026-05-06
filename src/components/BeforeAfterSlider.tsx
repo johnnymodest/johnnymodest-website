@@ -3,17 +3,18 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import type { Pair } from "../../content/before-after";
 
+const PULSE_SPEED = 1; // higher = faster oscillation
+
 interface BeforeAfterSliderProps {
   pairs: Pair[];
 }
 
 export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [split, setSplit] = useState(50);
+  const [split, setSplit] = useState(33);
   const sliderRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const pulseRaf = useRef<number | null>(null);
-  const pulseDir = useRef(1);
   const pulseActive = useRef(true);
   const hasInteracted = useRef(false);
 
@@ -29,31 +30,24 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
     }
   }, [split]);
 
-  // Reset split to 50% when pair index changes
+  // Reset split to 33% when pair index changes
   useEffect(() => {
-    setSplit(50);
+    setSplit(70);
   }, [currentIndex]);
 
-  // Auto-pulse animation
+  // Auto-pulse animation (sine-driven for eased breathing)
   useEffect(() => {
     if (!pulseActive.current) return;
 
-    const animate = () => {
+    const start = performance.now();
+
+    const animate = (now: number) => {
       if (!pulseActive.current) return;
 
-      setSplit((prev) => {
-        const newVal = prev + pulseDir.current * 0.15;
-
-        if (newVal >= 53) {
-          pulseDir.current = -1;
-          return 53;
-        }
-        if (newVal <= 47) {
-          pulseDir.current = 1;
-          return 47;
-        }
-        return newVal;
-      });
+      const elapsed = (now - start) / 1000;
+      // sine wave clamped to [0,1]: maps to 30–70 range with easing
+      const t = (Math.sin(elapsed * PULSE_SPEED) + 1) / 2;
+      setSplit(30 + t * 40);
 
       pulseRaf.current = requestAnimationFrame(animate);
     };
@@ -134,15 +128,15 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
         {/* Before panel */}
         <div className="ba__panel ba__panel--before">
           <span className="ba__label">BEFORE</span>
-          <span className="eyebrow">{pair.context}</span>
           <p className="ba__text">{pair.before}</p>
+          <span className="eyebrow ba__context">{pair.context}</span>
         </div>
 
         {/* After panel */}
         <div className="ba__panel ba__panel--after">
           <span className="ba__label">AFTER</span>
-          <span className="eyebrow">{pair.context}</span>
           <p className="ba__text">{pair.after}</p>
+          <span className="eyebrow ba__context">{pair.context}</span>
         </div>
 
         {/* Handle */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import CtaSection from "@/components/sections/CtaSection";
 
 export const metadata: Metadata = {
   title: "About — Johnny Modest",
@@ -108,19 +109,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="cta">
-        <div className="shell">
-          <h2 className="cta__title">Get a 30-minute no-agenda call.</h2>
-          <div className="cta__row">
-            <a href="/contact" className="btn">
-              Send a brief <span className="btn__arrow">→</span>
-            </a>
-            <a href="mailto:hello@johnnymodest.com" className="btn btn--ghost">
-              hello@johnnymodest.com
-            </a>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title="Got a 30-minute version of the problem?"
+        primaryHref="/contact"
+        primaryLabel="Send a brief"
+      />
     </>
   );
 }

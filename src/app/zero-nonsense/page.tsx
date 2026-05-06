@@ -1,36 +1,18 @@
-"use client";
+import type { Metadata } from "next";
 
-import { useEffect, useRef } from "react";
-import { principles } from "../../../content/principles";
+export const metadata: Metadata = {
+  title: "Zero Nonsense — Johnny Modest",
+  description: "What we believe, in plain language.",
+};
 
 export default function ZeroNonsensePage() {
-  const principleRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-revealed");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    principleRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <>
       <section className="manifesto-hero">
         <div className="shell">
-          <p className="eyebrow">THE MANIFESTO · SIX PRINCIPLES · SCROLL ON</p>
+          <p className="eyebrow">
+            THE MANIFESTO · TWO PRINCIPLES · THAT&rsquo;S IT
+          </p>
           <h1>
             Zero <em>Nonsense.</em>
           </h1>
@@ -42,31 +24,50 @@ export default function ZeroNonsensePage() {
       </section>
 
       <div className="shell">
-        {principles.map((p, i) => (
-          <div
-            key={p.num}
-            ref={(el) => { principleRefs.current[i] = el; }}
-            className={`principle${p.amber ? " principle--amber" : ""}`}
-          >
-            <p className="principle__num">
-              Principle <span>{p.num}</span> / 06
-            </p>
-            <h2
-              className="principle__text"
-              dangerouslySetInnerHTML={{ __html: p.heading }}
-            />
-            <p className="principle__caption">{p.body}</p>
-          </div>
-        ))}
+        <div className="principle">
+          <p className="principle__num">Principle 01</p>
+          <h2 className="principle__text">
+            Ideas that stand on their own, explained plainly.
+          </h2>
+          <p className="principle__caption">
+            Buzzwords, hyperbole, and bombastic phrasing are marketing copy
+            bleeding into business language. We don&rsquo;t believe that&rsquo;s
+            the right direction.
+          </p>
+          <p className="principle__caption">
+            Instead, we choose to rely on idea&rsquo;s own strength, and we are
+            willing to let go of ideas that require buzzwords and hyperbole to
+            stand. Function over form.
+          </p>
+        </div>
+
+        <hr />
+
+        <div className="principle principle--amber">
+          <p className="principle__num">Principle 02</p>
+          <h2 className="principle__text">Say what&rsquo;s true, early.</h2>
+          <p className="principle__caption">
+            We believe in stating intentions or agenda clearly, and in
+            acknowledging mistakes made on either side of the conversation
+            directly.
+          </p>
+          <p className="principle__caption">
+            We also believe setbacks and conflict are natural parts of any
+            process, and need to be surfaced early, so they can be addressed.
+          </p>
+        </div>
       </div>
 
       <section className="section">
         <div className="shell">
           <h2>
-            We also believe a <em>little bit of humor</em> is nice.
+            We also believe a <em>little bit of humor</em> is fine.
           </h2>
           <p className="principle__caption">
-            That one isn&rsquo;t a principle. It&rsquo;s just true.
+            That one isn&rsquo;t a principle. We just believe that the more
+            effort spent curating one&rsquo;s external persona, the less can be
+            spent on the task at hand. And that&rsquo;s quite a bit more
+            nonsense than zero.
           </p>
         </div>
       </section>

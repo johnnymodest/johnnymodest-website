@@ -1,0 +1,68 @@
+---
+title: Product management in a regulated, high-stakes environment
+client: SS&C Intralinks
+domain: M&A / Enterprise SaaS
+year: 2022
+nda: false
+slug: intralinks-pm-engagement
+metrics:
+  - value: "+35%"
+    label: "feature adoption"
+  - value: "DRM"
+    label: "for secure PDFs"
+  - value: "UX"
+    label: "where you don't expect it"
+pullQuote: "Looks like a cover page, but takes you to the future."
+---
+
+<div id="overview" className="cs-section">
+
+### Overview
+
+SS&C Intralinks is one of two dominant players in the Virtual Data Room space. The Virtual Data Room is a secure document collaboration platform for high-stakes financial transactions. M&A due diligence, where I worked, is the flagship use case, but the platform runs across capital raising, restructuring, IPOs, and anything else where confidential documents change hands under legal and regulatory pressure.
+
+I joined as Senior Product Manager on the sell-side product, balancing market and client requirements against compliance constraints, while running multiple workstreams in parallel. This is a case study about one of them, the one I feel I can discuss without disclosing privileged information.
+
+<Metrics />
+
+</div>
+
+<div id="the-problem" className="cs-section">
+
+### The problem
+
+Intralinks VDR exported DRM-protected PDFs, access controlled by the platform, rather than a simple shareable password. When users tried to open one from an email or network share, the browser would attempt to render it inline.
+
+Since browsers can't handle DRM-protected content this way, this resulted in a generic failure with little to no explanation. Most users assumed the feature was broken and stopped trying.
+
+</div>
+
+<PullQuote />
+
+<div id="the-approach" className="cs-section">
+
+### The approach
+
+The fix had two parts. We replaced the generic PDF cover page with a designed one that included clear instructions for opening the file. We added a link back to the live document in the platform, so users who couldn't or didn't want to use Adobe Reader had an immediate alternative.
+
+None of this was technically difficult in isolation. However, in a highly-regulated enterprise product with multiple stakeholder groups, this needed to be handled with everyone's requirements and timelines in mind.
+
+</div>
+
+<div id="the-outcome" className="cs-section">
+
+### The outcome
+
+Protected PDF adoption increased by 35%.
+
+This part of the experience felt more connected, and less like "using a legacy solution".
+
+</div>
+
+<div id="what-id-do-differently" className="cs-section">
+
+### What I'd do differently
+
+I'd generally set up monitoring for "broken promises". When the user begins a process (in this case, downloading a DRM-protected PDF) and there is no attempt to open that PDF.
+
+</div>

@@ -16,7 +16,7 @@ export const services: Service[] = [
     num: "02",
     title: "Hands-on Product Leadership",
     body: "I parachute in, get embedded enough to understand the actual problem, recommend, ship, build the system to run without me, then exit.",
-    meta: "Interim · Fractional · 6–14 weeks",
+    meta: "Roadmap · Processes · Tracking",
   },
   {
     num: "03",

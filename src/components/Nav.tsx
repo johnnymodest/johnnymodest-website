@@ -5,10 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const LINKS = [
+  { href: "/", label: "Home" },
   { href: "/case-studies", label: "Case studies" },
   { href: "/zero-nonsense", label: "Zero nonsense" },
   { href: "/about", label: "About" },
-  //{ href: '/contact', label: 'Contact' },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export default function Nav() {
@@ -17,12 +18,46 @@ export default function Nav() {
 
   return (
     <nav className="nav">
-      <div className="nav__inner shell">
+      <div className="nav__inner shell shell--wide">
         <Link href="/" className="nav__logo" onClick={() => setMenuOpen(false)}>
-          <span className="nav__monogram" aria-hidden="true">
-            <span className="nav__mono-j">J</span>
-            <span className="nav__mono-m">M</span>
-          </span>
+          <svg
+            width={36}
+            height={36}
+            viewBox="0 0 36 36"
+            aria-label="JM monogram"
+            className="nav__monogram"
+          >
+            <line
+              x1={3}
+              y1={32}
+              x2={33}
+              y2={4}
+              stroke="currentColor"
+              strokeWidth={1.5}
+            />
+            <text
+              x={6}
+              y={14}
+              fontFamily="var(--font-display)"
+              fontSize={13}
+              fontWeight={500}
+              fill="currentColor"
+              letterSpacing="-0.02em"
+            >
+              J
+            </text>
+            <text
+              x={20}
+              y={30}
+              fontFamily="var(--font-display)"
+              fontSize={13}
+              fontWeight={500}
+              fill="currentColor"
+              letterSpacing="-0.02em"
+            >
+              M
+            </text>
+          </svg>
           <span className="nav__wordmark">Johnny Modest</span>
         </Link>
 

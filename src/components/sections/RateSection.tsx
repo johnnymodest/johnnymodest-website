@@ -4,19 +4,16 @@ export default function RateSection() {
       <div className="shell">
         <div className="rate__grid">
           <div className="rate__num">
-            $<span>80</span>/hr
+            <span>$80/hr</span>
           </div>
           <div className="rate__notes">
+            <p>I do the work myself. No bait-and-switch.</p>
+            <p>From $80/hr. Shorter, more urgent engagements can cost more.</p>
             <p>
-              From $80/hr. Shorter, more urgent engagements cost more.
+              Scope changes are welcome. They just need dedicated time to be
+              done right.
             </p>
-            <p>
-              Scope changes are welcome — they need dedicated time to be done
-              right.
-            </p>
-            <p>
-              Two-week minimum. Most engagements run 6–14 weeks.
-            </p>
+            <p>Two-week minimum. Most engagements run 6–14 weeks.</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,70 @@
+---
+title: LLM-based spam detection at scale
+client: Mailtrap
+domain: Developer Tools / Email Infrastructure
+year: 2024
+nda: false
+slug: llm-spam-detection
+metrics:
+  - value: "~60%"
+    label: "reduction in time to flag a spammer"
+  - value: "150K+"
+    label: "monthly active users on the platform"
+  - value: "Invisible"
+    label: "to legitimate users outside of rare false positives"
+pullQuote: "Legitimate users had a great time."
+---
+
+<div id="overview" className="cs-section">
+
+### Overview
+
+Email sending platforms live and die by their reputation. Spammers get through, emails start bouncing, and in a shared infrastructure, one bad actor affects everyone on the same IP pool. Classic signals like send volume, bounce rate and spam complaints catch problems after the damage is done.
+
+Mailtrap needed to catch them earlier.
+
+<Metrics />
+
+</div>
+
+<div id="the-problem" className="cs-section">
+
+### The problem
+
+The existing detection relied on behavioural and quantitative signals: how much a user sends, how fast, how many bounces, how many complaints. These are lagging indicators so, by the time they fire, reputation damage is already accumulating.
+
+Managing downstream consequences also creates overhead. IP pool remediation, manual communication. The challenge was identifying bad actors closer to signup, before they caused damage, without adding friction for the majority of users who are legitimate.
+
+</div>
+
+<div id="the-approach" className="cs-section">
+
+### The approach
+
+As Product Lead for the internal Data Analytics team, I advised on signals, data collection, and scoring strategy. The LLM layer allowed us to automate the analysis of additional signals, including some that required service calls, and produce a composite score that fed into the existing review workflow.
+
+I'm not sharing actual signals and process, but the idea is that some signals that previously required human judgment could be evaluated programmatically at scale, with a very low false-positive rate.
+
+</div>
+
+<PullQuote />
+
+<div id="the-outcome" className="cs-section">
+
+### The outcome
+
+Detection time (the time from a spammer signing up to being flagged) dropped by 60%. A human-in-the-loop review process remained, mostly for reinstatement cases, but the volume of late-stage damage was reduced.
+
+Platform reputation is harder to measure directly, but fewer spammers getting further means fewer bounce events, fewer IP pool interventions, and less noise in the review queue.
+
+</div>
+
+<div id="what-id-do-differently" className="cs-section">
+
+### What I'd do differently
+
+Scoring models drift. The signals that work today work because spammers haven't optimised against them yet. The lagging indicator problem has moved downstream to pattern detection where, like before, statistics only reveal a new pattern after damage has been done.
+
+A combination of workflow tooling and LLMs allows auditing data with much higher frequency, and surfacing emerging patterns for human review.
+
+</div>

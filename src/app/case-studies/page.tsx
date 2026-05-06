@@ -1,56 +1,60 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { promises as fs } from "fs";
+import path from "path";
+import { parse as parseYaml } from "yaml";
 
 export const metadata: Metadata = {
   title: "Case Studies — Johnny Modest",
   description: "Selected work, told plainly.",
 };
 
-const cases = [
-  {
-    num: "01",
-    title: "AI-powered geographic expansion",
-    nda: true,
-    client: "Private Company",
-    domain: "Agriculture",
-    year: "2024",
-    slug: "ai-geographic-expansion",
-  },
-  {
-    num: "02",
-    title: "LLM-based spam detection at scale",
-    nda: false,
-    client: "Mailtrap",
-    domain: "Developer Tools",
-    year: "2023",
-    slug: "llm-spam-detection",
-  },
-  {
-    num: "03",
-    title: "ML display optimization, +38% engagement",
-    nda: false,
-    client: "TrendMD",
-    domain: "Academic Media",
-    year: "2022",
-    slug: "ml-display-optimization",
-  },
-  {
-    num: "04",
-    title: "Partnership pipeline rebuild",
-    nda: true,
-    client: "Private Company",
-    domain: "B2B SaaS",
-    year: "2021",
-    slug: "partnership-pipeline",
-  },
-];
+interface CaseStudyEntry {
+  slug: string;
+  title: string;
+  client: string;
+  domain: string;
+  year: string;
+  nda: string;
+}
 
-export default function CaseStudiesPage() {
+async function getCaseStudies(): Promise<CaseStudyEntry[]> {
+  const dir = path.join(process.cwd(), "content/case-studies");
+  const files = (await fs.readdir(dir)).filter((f) => f.endsWith(".mdx"));
+
+  const entries: CaseStudyEntry[] = [];
+  for (const file of files) {
+    const raw = await fs.readFile(path.join(dir, file), "utf-8");
+    const match = raw.match(/^---\n([\s\S]*?)\n---/);
+    if (!match) continue;
+    const fm = parseYaml(match[1]) as {
+      title: string;
+      client: string;
+      domain: string;
+      year: string;
+      nda: string;
+    };
+    entries.push({
+      slug: file.replace(/\.mdx$/, ""),
+      title: fm.title,
+      client: fm.client,
+      domain: fm.domain,
+      year: fm.year,
+      nda: fm.nda,
+    });
+  }
+
+  entries.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+  return entries;
+}
+
+export default async function CaseStudiesPage() {
+  const cases = await getCaseStudies();
   return (
     <>
       <section className="section">
         <div className="shell">
-          <p className="eyebrow">CASE STUDIES · 4 ENGAGEMENTS</p>
+          <p className="eyebrow">CASE STUDIES · {cases.length} ENGAGEMENTS</p>
           <h1>
             Selected work,
             <br />
@@ -66,18 +70,12 @@ export default function CaseStudiesPage() {
       <section className="section section--tight">
         <div className="shell">
           <div className="cs-list">
-            {cases.map((c) => {
-              const href =
-                c.slug === "ai-geographic-expansion"
-                  ? `/case-studies/${c.slug}`
-                  : "/case-studies/ai-geographic-expansion";
-
-              return (
-                <Link key={c.num} href={href} className="cs-row">
-                  <div className="cs-row__num">{c.num}</div>
+            {cases.map((c, i) => (
+                <Link key={c.slug} href={`/case-studies/${c.slug}`} className="cs-row">
+                  <div className="cs-row__num">{String(i + 1).padStart(2, "0")}</div>
                   <div className="cs-row__title">
                     {c.title}
-                    {c.nda && <span className="cs-row__nda">NDA</span>}
+                    {c.nda === "true" && <span className="cs-row__nda">NDA</span>}
                   </div>
                   <div className="cs-row__client">
                     {c.client} · {c.domain}
@@ -85,8 +83,7 @@ export default function CaseStudiesPage() {
                   <div className="cs-row__year">{c.year}</div>
                   <div className="cs-row__arrow">→</div>
                 </Link>
-              );
-            })}
+              ))}
           </div>
         </div>
       </section>

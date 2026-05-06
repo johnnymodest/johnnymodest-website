@@ -4,11 +4,17 @@ export default function ServicesSection() {
   return (
     <section className="section">
       <div className="shell">
-        <div className="row-between" style={{ marginBottom: "clamp(32px, 4vw, 56px)" }}>
-          <p className="eyebrow">THREE THINGS. NOT FOUR.</p>
+        <div
+          className="row-between"
+          style={{ marginBottom: "clamp(32px, 4vw, 56px)" }}
+        >
+          <p className="eyebrow">
+            I do three things, and they cover most needs.
+          </p>
           <p className="lead" style={{ maxWidth: 380 }}>
-            No bronze/silver/gold tiers. No packages. We talk about the
-            actual problem and shape the engagement around it.
+            No bronze/silver/gold tiers or add-ons. <br></br>
+            We talk about the actual need and shape the engagement around it.
+            Like adults.
           </p>
         </div>
 

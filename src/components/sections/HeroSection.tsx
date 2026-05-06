@@ -1,3 +1,5 @@
+import TypewriterText from "@/components/TypewriterText";
+
 export default function HeroSection() {
   return (
     <section className="hero">
@@ -8,13 +10,15 @@ export default function HeroSection() {
             <br />
             leadership.
             <br />
-            <em>Fix the thing.</em>
+            <TypewriterText />
             <br />
-            High-five.
+            Zero nonsense.
           </h1>
           <div className="hero__lead-row">
             <p className="lead">
-              I parachute into stuck product orgs, find the things you can't see from the inside, ship the fix, and exit before I become furniture.
+              I parachute into stuck product orgs, find the things you can't see
+              from the inside, ship the fix, and move on before I become
+              furniture.
             </p>
             <div className="hero__meta">
               <span className="tag tag--amber">

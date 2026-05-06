@@ -3,7 +3,21 @@ import Link from "next/link";
 import { promises as fs } from "fs";
 import path from "path";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { parse as parseYaml } from "yaml";
 import CaseStudyNav from "./CaseStudyNav";
+import Metrics from "@/components/Metrics";
+import type { MetricItem } from "@/components/Metrics";
+import PullQuote from "@/components/PullQuote";
+import CtaSection from "@/components/sections/CtaSection";
+
+interface CaseStudyCta {
+  eyebrow?: string;
+  title: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
 
 interface Frontmatter {
   title: string;
@@ -12,18 +26,16 @@ interface Frontmatter {
   year: string;
   nda: string;
   slug: string;
+  metrics?: MetricItem[];
+  pullQuote?: string;
+  cta?: CaseStudyCta;
 }
 
 function parseFrontmatter(raw: string): { fm: Frontmatter; body: string } {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!match) throw new Error("Invalid frontmatter");
-  const lines = match[1].split("\n");
-  const fm: Record<string, string> = {};
-  for (const line of lines) {
-    const [k, ...rest] = line.split(":");
-    if (k && rest.length) fm[k.trim()] = rest.join(":").trim();
-  }
-  return { fm: fm as unknown as Frontmatter, body: match[2] };
+  const fm = parseYaml(match[1]) as Frontmatter;
+  return { fm, body: match[2] };
 }
 
 export async function generateMetadata({
@@ -122,11 +134,34 @@ export default async function CaseStudyPage({
           <div className="cs-body">
             <CaseStudyNav />
             <div className="cs-body__content">
-              <MDXRemote source={body} />
+              <MDXRemote
+                source={body}
+                components={{
+                  Metrics: (props: { items?: MetricItem[] }) => {
+                    const items = props.items ?? fm.metrics;
+                    return items ? <Metrics items={items} /> : null;
+                  },
+                  PullQuote: (props: { text?: string }) => {
+                    const text = props.text ?? fm.pullQuote;
+                    return text ? <PullQuote text={text} /> : null;
+                  },
+                }}
+              />
             </div>
           </div>
         </div>
       </section>
+
+      {fm.cta && (
+        <CtaSection
+          eyebrow={fm.cta.eyebrow}
+          title={fm.cta.title}
+          primaryHref={fm.cta.primaryHref}
+          primaryLabel={fm.cta.primaryLabel}
+          secondaryHref={fm.cta.secondaryHref}
+          secondaryLabel={fm.cta.secondaryLabel}
+        />
+      )}
     </>
   );
 }

@@ -3,19 +3,54 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className="foot">
-      <div className="shell">
+      <div className="shell shell--wide">
         <div className="foot__grid">
           <div className="foot__brand">
-            <div className="nav__logo">
-              <span className="nav__monogram" aria-hidden="true">
-                <span className="nav__mono-j">J</span>
-                <span className="nav__mono-m">M</span>
-              </span>
+            <Link href="/" className="nav__logo">
+              <svg
+                width={36}
+                height={36}
+                viewBox="0 0 36 36"
+                aria-label="JM monogram"
+                className="nav__monogram"
+              >
+                <line
+                  x1={3}
+                  y1={32}
+                  x2={33}
+                  y2={4}
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                />
+                <text
+                  x={6}
+                  y={14}
+                  fontFamily="var(--font-display)"
+                  fontSize={13}
+                  fontWeight={500}
+                  fill="currentColor"
+                  letterSpacing="-0.02em"
+                >
+                  J
+                </text>
+                <text
+                  x={20}
+                  y={30}
+                  fontFamily="var(--font-display)"
+                  fontSize={13}
+                  fontWeight={500}
+                  fill="currentColor"
+                  letterSpacing="-0.02em"
+                >
+                  M
+                </text>
+              </svg>
               <span className="nav__wordmark">Johnny Modest</span>
-            </div>
+            </Link>
             <p>
-              Zero-nonsense product design, research, and strategy for teams
-              that want outcomes, not theater.
+              Senior product leadership for teams that need someone to see what
+              they can&apos;t see from the inside. Based in Bucharest. Working
+              globally.
             </p>
           </div>
 
@@ -34,7 +69,7 @@ export default function Footer() {
             <ul>
               <li><a href="mailto:hello@johnnymodest.com" className="amber-link">hello@johnnymodest.com</a></li>
               <li><Link href="/contact" className="amber-link">Brief form</Link></li>
-              <li><a href="https://linkedin.com/in/johnnymodest" target="_blank" rel="noopener noreferrer" className="amber-link">LinkedIn &nearr;</a></li>
+              <li><a href="https://linkedin.com/in/johnnymodest" target="_blank" rel="noopener noreferrer" className="amber-link">LinkedIn ↗</a></li>
             </ul>
           </div>
 
@@ -49,7 +84,7 @@ export default function Footer() {
         </div>
 
         <div className="foot__base">
-          <span>&copy; 2026 Johnny Modest Consultancy</span>
+          <span>&copy; {new Date().getFullYear()} Johnny Modest Consultancy</span>
           <span>No packages. No theater. No buzzwords.</span>
         </div>
       </div>
