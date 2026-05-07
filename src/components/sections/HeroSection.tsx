@@ -6,19 +6,15 @@ export default function HeroSection() {
       <div className="shell">
         <div className="hero__grid">
           <h1 className="hero__title">
-            Senior product
-            <br />
-            leadership.
-            <br />
             <TypewriterText />
             <br />
-            Zero nonsense.
+            <em className="highlight">Zero-nonsense</em>{" "}
+            Product leadership.
           </h1>
           <div className="hero__lead-row">
             <p className="lead">
-              I parachute into stuck product orgs, find the things you can't see
-              from the inside, ship the fix, and move on before I become
-              furniture.
+              Hi there! I'm Tudor. I parachute into product orgs, read the room,
+              fix the problem, and move on.
             </p>
             <div className="hero__meta">
               <span className="tag tag--amber">

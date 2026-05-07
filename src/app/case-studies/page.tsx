@@ -58,7 +58,7 @@ export default async function CaseStudiesPage() {
           <h1>
             Selected work,
             <br />
-            told <em>plainly.</em>
+            told <em className="highlight">plainly.</em>
           </h1>
           <p className="lead" style={{ marginTop: "clamp(24px, 3vw, 40px)" }}>
             Some clients are named. Some are NDA-bound and called &lsquo;Private

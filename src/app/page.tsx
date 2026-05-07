@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
+import DomainsSection from "@/components/sections/DomainsSection";
 import SliderSection from "@/components/sections/SliderSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import RateSection from "@/components/sections/RateSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <SliderSection />
       <ServicesSection />
       <RateSection />
+      <DomainsSection />
       <SelectedWorkSection />
     </>
   );

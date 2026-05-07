@@ -66,6 +66,16 @@ h1 { font-size: clamp(48px, 8.6vw, 132px); }
 h2 { font-size: clamp(36px, 5.4vw, 78px); }
 h3 { font-size: clamp(24px, 2.6vw, 38px); letter-spacing: -0.015em; }
 h4 { font-size: clamp(18px, 1.4vw, 22px); letter-spacing: -0.01em; }
+.highlight {
+  font-style: normal;
+  background: var(--amber);
+  color: var(--amber-text);
+  padding: 0 0.18em;
+  margin: 0 -0.05em;
+}
+p .highlight {
+  color: var(--ink);
+}
 p { margin: 0; text-wrap: pretty; }
 
 .eyebrow {
@@ -265,14 +275,6 @@ p { margin: 0; text-wrap: pretty; }
 }
 .hero__title {
   max-width: 14ch;
-}
-.hero__title em {
-  font-style: normal;
-  background: var(--amber);
-  color: var(--amber-text);
-  padding: 0 0.18em;
-  margin: 0 -0.05em;
-  display: inline-block;
 }
 .typewriter-cursor {
   font-weight: 300;
@@ -578,10 +580,6 @@ p { margin: 0; text-wrap: pretty; }
   letter-spacing: -0.025em;
   max-width: 22ch;
   text-wrap: balance;
-}
-.principle__text em {
-  font-style: normal;
-  color: var(--amber-dark);
 }
 .principle__caption {
   margin-top: 32px;

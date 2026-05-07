@@ -1,34 +1,19 @@
 import type { Metadata } from "next";
 import CtaSection from "@/components/sections/CtaSection";
+import DomainsSection from "@/components/sections/DomainsSection";
 
 export const metadata: Metadata = {
   title: "About — Johnny Modest",
   description: "Cross-domain pattern recognition.",
 };
-
-const domains = [
-  "01 Developer tools",
-  "02 B2B SaaS",
-  "03 Marketplaces",
-  "04 Academic media",
-  "05 Edtech",
-  "06 Fintech (consumer)",
-  "07 Agriculture",
-  "08 Email infrastructure",
-  "09 Logistics",
-  "10 Subscription products",
-  "11 Vertical AI",
-  "12 Internal platforms",
-];
-
 export default function AboutPage() {
   return (
     <>
       <section className="about-hero">
         <div className="shell">
           <h1>
-            You hire me because I&rsquo;ll see things your team can&rsquo;t
-            see <em>from the inside.</em>
+            You hire me because I&rsquo;ll see things your team can&rsquo;t see{" "}
+            <em className="highlight">from the inside.</em>
           </h1>
         </div>
       </section>
@@ -77,37 +62,16 @@ export default function AboutPage() {
               </p>
               <p>
                 My background spans engineering, design, and business strategy.
-                I can read code, sketch flows, write copy, and build a
-                financial model. I know which hat to wear and when to hand
-                something off to someone better.
+                I can read code, sketch flows, write copy, and build a financial
+                model. I know which hat to wear and when to hand something off
+                to someone better.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section section--tight">
-        <div className="shell">
-          <h2 style={{ marginBottom: "clamp(32px, 4vw, 56px)" }}>
-            Domains I&rsquo;ve worked in
-          </h2>
-
-          <div className="domains">
-            {domains.map((d) => (
-              <div key={d} className="domain">
-                <span className="domain__num">{d.slice(0, 2)}</span>
-                {d.slice(3)}
-              </div>
-            ))}
-          </div>
-
-          <p className="muted" style={{ marginTop: 20, fontSize: 14 }}>
-            If your industry isn&rsquo;t on this list, that&rsquo;s not a
-            disqualifier. Tell me about it — the cross-domain thing only works
-            if there are new domains.
-          </p>
-        </div>
-      </section>
+      <DomainsSection />
 
       <CtaSection
         title="Got a 30-minute version of the problem?"

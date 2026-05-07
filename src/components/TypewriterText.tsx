@@ -68,7 +68,7 @@ export default function TypewriterText() {
   const showCursor = phase === "typing" || phase === "deleting";
 
   return (
-    <em>
+    <>
       {text}
       <span
         aria-hidden
@@ -78,6 +78,6 @@ export default function TypewriterText() {
         |
       </span>
       it.
-    </em>
+    </>
   );
 }

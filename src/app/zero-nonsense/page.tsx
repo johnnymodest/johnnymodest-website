@@ -14,7 +14,7 @@ export default function ZeroNonsensePage() {
             THE MANIFESTO · TWO PRINCIPLES · THAT&rsquo;S IT
           </p>
           <h1>
-            Zero <em>Nonsense.</em>
+            Zero <em className="highlight">Nonsense.</em>
           </h1>
           <p className="lead" style={{ marginTop: "clamp(24px, 3vw, 40px)" }}>
             What we believe, in plain language. If you read these and nod,
@@ -61,7 +61,7 @@ export default function ZeroNonsensePage() {
       <section className="section">
         <div className="shell">
           <h2>
-            We also believe a <em>little bit of humor</em> is fine.
+            We also believe a <em className="highlight">little bit of humor</em> is fine.
           </h2>
           <p className="principle__caption">
             That one isn&rsquo;t a principle. We just believe that the more

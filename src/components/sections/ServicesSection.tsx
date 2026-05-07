@@ -6,16 +6,12 @@ export default function ServicesSection() {
       <div className="shell">
         <div
           className="row-between"
-          style={{ marginBottom: "clamp(32px, 4vw, 56px)" }}
+          style={{ marginBottom: "clamp(16px, 2vw, 32px)" }}
         >
-          <p className="eyebrow">
-            I do three things, and they cover most needs.
-          </p>
-          <p className="lead" style={{ maxWidth: 380 }}>
-            No bronze/silver/gold tiers or add-ons. <br></br>
-            We talk about the actual need and shape the engagement around it.
-            Like adults.
-          </p>
+          <h2>
+            What you need<br></br>
+            comes in <em>three buckets.</em>
+          </h2>
         </div>
 
         <div className="services">
@@ -27,6 +23,17 @@ export default function ServicesSection() {
               <p className="service__meta">{s.meta}</p>
             </div>
           ))}
+        </div>
+
+        <div
+          className="row-between"
+          style={{ marginTop: "clamp(16px, 2vw, 32px)" }}
+        >
+          <p className="eyebrow" style={{ maxWidth: 380 }}>
+            No bronze/silver/gold tiers or add-ons. <br></br>
+            We talk about the actual need and shape the engagement around it.
+            Like adults.
+          </p>
         </div>
       </div>
     </section>
