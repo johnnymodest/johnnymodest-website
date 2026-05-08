@@ -1,0 +1,7 @@
+.claude/
+.config/
+docs/
+AGENTS.md
+CLAUDE.md
+free-claude-code-proxy.log
+free-claude-code-proxy.pid
