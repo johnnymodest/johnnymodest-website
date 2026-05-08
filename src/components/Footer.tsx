@@ -1,18 +1,20 @@
 import Link from 'next/link';
+import { getNextQuarter } from '@/lib/utils';
 
 export default function Footer() {
+  const nextQuarter = getNextQuarter();
   return (
-    <footer className="foot">
+    <footer className="site-footer">
       <div className="shell shell--wide">
-        <div className="foot__grid">
-          <div className="foot__brand">
-            <Link href="/" className="nav__logo">
+        <div className="site-footer__grid">
+          <div className="site-footer__brand">
+            <Link href="/" className="site-header__logo">
               <svg
                 width={36}
                 height={36}
                 viewBox="0 0 36 36"
                 aria-label="JM monogram"
-                className="nav__monogram"
+                className="site-header__monogram"
               >
                 <line
                   x1={3}
@@ -45,7 +47,7 @@ export default function Footer() {
                   M
                 </text>
               </svg>
-              <span className="nav__wordmark">Johnny Modest</span>
+              <span className="site-header__wordmark">Johnny Modest</span>
             </Link>
             <p>
               Senior product leadership for teams that need someone to see what
@@ -54,7 +56,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="foot__col">
+          <div className="site-footer__col">
             <h5>Site</h5>
             <ul>
               <li><Link href="/" className="amber-link">Home</Link></li>
@@ -64,7 +66,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="foot__col">
+          <div className="site-footer__col">
             <h5>Direct</h5>
             <ul>
               <li><a href="mailto:hello@johnnymodest.com" className="amber-link">hello@johnnymodest.com</a></li>
@@ -73,17 +75,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="foot__col">
+          <div className="site-footer__col">
             <h5>Engagement</h5>
             <ul>
               <li>Rates from $80/hr</li>
               <li>2 week minimum</li>
-              <li>Currently booking Q3</li>
+              <li>Currently booking {nextQuarter}</li>
             </ul>
           </div>
         </div>
 
-        <div className="foot__base">
+        <div className="site-footer__base">
           <span>&copy; {new Date().getFullYear()} Johnny Modest Consultancy</span>
           <span>No packages. No theater. No buzzwords.</span>
         </div>

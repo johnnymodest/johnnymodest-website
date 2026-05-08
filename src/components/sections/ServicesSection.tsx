@@ -14,13 +14,13 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        <div className="services">
+        <div className="data-list">
           {services.map((s) => (
-            <div key={s.num} className="service">
-              <div className="service__num">{s.num}</div>
-              <h3 className="service__title">{s.title}</h3>
-              <p className="service__body">{s.body}</p>
-              <p className="service__meta">{s.meta}</p>
+            <div key={s.num} className="data-list__row">
+              <div className="data-list__num">{s.num}</div>
+              <h3 className="data-list__title">{s.title}</h3>
+              <p className="data-list__body">{s.body}</p>
+              <p className="data-list__meta">{s.meta}</p>
             </div>
           ))}
         </div>

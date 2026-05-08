@@ -124,28 +124,28 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
 
   return (
     <div>
-      <div ref={sliderRef} className="ba">
+      <div ref={sliderRef} className="compare">
         {/* Before panel */}
-        <div className="ba__panel ba__panel--before">
-          <span className="ba__label">BEFORE</span>
-          <p className="ba__text">{pair.before}</p>
-          <span className="eyebrow ba__context">{pair.context}</span>
+        <div className="compare__panel compare__panel--before">
+          <span className="compare__label">BEFORE</span>
+          <p className="compare__text">{pair.before}</p>
+          <span className="eyebrow compare__context">{pair.context}</span>
         </div>
 
         {/* After panel */}
-        <div className="ba__panel ba__panel--after">
-          <span className="ba__label">AFTER</span>
-          <p className="ba__text">{pair.after}</p>
-          <span className="eyebrow ba__context">{pair.context}</span>
+        <div className="compare__panel compare__panel--after">
+          <span className="compare__label">AFTER</span>
+          <p className="compare__text">{pair.after}</p>
+          <span className="eyebrow compare__context">{pair.context}</span>
         </div>
 
         {/* Handle */}
         <div
-          className="ba__handle"
+          className="compare__handle"
           onMouseDown={handleDragStart}
           onTouchStart={handleDragStart}
         >
-          <div className="ba__grip">
+          <div className="compare__grip">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -162,14 +162,14 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
       </div>
 
       {/* Navigation */}
-      <div className="ba__nav">
-        <div className="ba__counter">
+      <div className="compare__nav">
+        <div className="compare__counter">
           {String(currentIndex + 1).padStart(2, "0")} /{" "}
           {String(total).padStart(2, "0")} &middot; Drag to translate
         </div>
-        <div className="ba__arrows">
+        <div className="compare__arrows">
           <button
-            className="ba__arrow"
+            className="compare__arrow"
             onClick={goPrev}
             disabled={!canGoPrev}
             aria-label="Previous pair"
@@ -177,7 +177,7 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
             &larr;
           </button>
           <button
-            className="ba__arrow"
+            className="compare__arrow"
             onClick={goNext}
             disabled={!canGoNext}
             aria-label="Next pair"

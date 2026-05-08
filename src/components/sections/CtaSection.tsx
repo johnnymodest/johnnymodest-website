@@ -18,7 +18,7 @@ export default function CtaSection({
   secondaryLabel,
 }: CtaSectionProps) {
   return (
-    <section className="cta">
+    <section className="callout">
       <div className="shell shell--wide">
         {eyebrow && (
           <div
@@ -32,8 +32,8 @@ export default function CtaSection({
             {eyebrow}
           </div>
         )}
-        <h2 className="cta__title">{title}</h2>
-        <div className="cta__row">
+        <h2 className="callout__title">{title}</h2>
+        <div className="callout__actions">
           <Link href={primaryHref} className="btn">
             {primaryLabel}{" "}
             <svg

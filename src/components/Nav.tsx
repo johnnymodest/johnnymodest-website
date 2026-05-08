@@ -17,15 +17,15 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="nav">
-      <div className="nav__inner shell shell--wide">
-        <Link href="/" className="nav__logo" onClick={() => setMenuOpen(false)}>
+    <nav className="site-header">
+      <div className="site-header__inner shell shell--wide">
+        <Link href="/" className="site-header__logo" onClick={() => setMenuOpen(false)}>
           <svg
             width={36}
             height={36}
             viewBox="0 0 36 36"
             aria-label="JM monogram"
-            className="nav__monogram"
+            className="site-header__monogram"
           >
             <line
               x1={3}
@@ -58,11 +58,11 @@ export default function Nav() {
               M
             </text>
           </svg>
-          <span className="nav__wordmark">Johnny Modest</span>
+          <span className="site-header__wordmark">Johnny Modest</span>
         </Link>
 
         <button
-          className="nav__hamburger"
+          className="site-header__hamburger"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           onClick={() => setMenuOpen((o) => !o)}
@@ -71,13 +71,13 @@ export default function Nav() {
           <span />
         </button>
 
-        <div className={`nav__menu${menuOpen ? " is-open" : ""}`}>
-          <div className="nav__links">
+        <div className={`site-header__menu${menuOpen ? " is-open" : ""}`}>
+          <div className="site-header__links">
             {LINKS.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="nav__link amber-link"
+                className="site-header__link amber-link"
                 aria-current={pathname === href ? "page" : undefined}
                 onClick={() => setMenuOpen(false)}
               >
@@ -87,7 +87,7 @@ export default function Nav() {
           </div>
           <Link
             href="/contact"
-            className="nav__cta"
+            className="site-header__cta"
             onClick={() => setMenuOpen(false)}
           >
             Start a conversation &rarr;

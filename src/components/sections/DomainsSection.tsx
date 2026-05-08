@@ -19,12 +19,12 @@ export default function DomainsSection() {
       <div className="shell">
         <h2>Domains I&rsquo;ve worked in</h2>
 
-        <div className="domains">
+        <div className="tag-grid">
           {domains.map((d) => {
             const [num, ...rest] = d.split(" ");
             return (
-              <div key={num} className="domain">
-                <span className="domain__num">{num}</span>
+              <div key={num} className="tag-grid__item">
+                <span className="tag-grid__num">{num}</span>
                 {rest.join(" ")}
               </div>
             );

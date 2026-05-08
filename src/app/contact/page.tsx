@@ -75,14 +75,14 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero — amber full-bleed */}
-      <section className="cta">
+      <section className="callout">
         <div className="shell">
-          <h1 className="cta__title">
+          <h1 className="callout__title">
             If something&rsquo;s stuck,
             <br />
             let&rsquo;s talk about it.
           </h1>
-          <div className="cta__row">
+          <div className="callout__actions">
             <a href="#brief-form" className="btn">
               Send a brief <span className="btn__arrow">&rarr;</span>
             </a>
@@ -96,9 +96,9 @@ export default function ContactPage() {
       {/* Contact grid */}
       <section className="section" id="brief-form">
         <div className="shell">
-          <div className="contact-grid">
+          <div className="two-col two-col--wide-right">
             {/* Left — contact info */}
-            <div className="contact-info">
+            <div className="two-col__aside">
               <h2 className="lead">No gatekeepers. No templates. Just a human who reads every message.</h2>
               <ul>
                 <li>

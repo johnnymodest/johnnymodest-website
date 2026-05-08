@@ -69,19 +69,19 @@ export default async function CaseStudiesPage() {
 
       <section className="section section--tight">
         <div className="shell">
-          <div className="cs-list">
+          <div className="data-list data-list--clickable">
             {cases.map((c, i) => (
-                <Link key={c.slug} href={`/case-studies/${c.slug}`} className="cs-row">
-                  <div className="cs-row__num">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="cs-row__title">
+                <Link key={c.slug} href={`/case-studies/${c.slug}`} className="data-list__row">
+                  <div className="data-list__num">{String(i + 1).padStart(2, "0")}</div>
+                  <div className="data-list__title">
                     {c.title}
-                    {c.nda === "true" && <span className="cs-row__nda">NDA</span>}
+                    {c.nda === "true" && <span className="data-list__badge">NDA</span>}
                   </div>
-                  <div className="cs-row__client">
+                  <div className="data-list__label">
                     {c.client} · {c.domain}
                   </div>
-                  <div className="cs-row__year">{c.year}</div>
-                  <div className="cs-row__arrow">→</div>
+                  <div className="data-list__year">{c.year}</div>
+                  <div className="data-list__arrow">→</div>
                 </Link>
               ))}
           </div>

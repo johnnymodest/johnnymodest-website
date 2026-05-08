@@ -8,10 +8,19 @@ export const metadata: Metadata = {
 export default function ZeroNonsensePage() {
   return (
     <>
-      <section className="manifesto-hero">
+      <section
+        className="page-head"
+        style={
+          {
+            "--ph-pad": "clamp(120px, 18vh, 200px)",
+            "--ph-pad-b": "clamp(80px, 10vw, 140px)",
+          } as React.CSSProperties
+        }
+      >
         <div className="shell">
           <p className="eyebrow">
-            THE MANIFESTO · TWO PRINCIPLES · THAT&rsquo;S IT
+            SOME CALL IT A MANIFESTO · I JUST FOLLOW THREE PRINCIPLES ·
+            THAT&rsquo;S IT
           </p>
           <h1>
             Zero <em className="highlight">Nonsense.</em>
@@ -24,50 +33,62 @@ export default function ZeroNonsensePage() {
       </section>
 
       <div className="shell">
-        <div className="principle">
-          <p className="principle__num">Principle 01</p>
-          <h2 className="principle__text">
+        <div className="feature-block">
+          <p className="feature-block__num">Principle 01</p>
+          <h2 className="feature-block__title">
             Ideas that stand on their own, explained plainly.
           </h2>
-          <p className="principle__caption">
-            Buzzwords, hyperbole, and bombastic phrasing are marketing copy
-            bleeding into business language. We don&rsquo;t believe that&rsquo;s
-            the right direction.
+          <p className="feature-block__body">
+            Buzzwords, hyperbole, and bombastic phrasing are marketing copy are
+            bleeding into business language. That&rsquo;s the wrong direction.
           </p>
-          <p className="principle__caption">
-            Instead, we choose to rely on idea&rsquo;s own strength, and we are
-            willing to let go of ideas that require buzzwords and hyperbole to
-            stand. Function over form.
+          <p className="feature-block__body">
+            Instead, we choose to rely on the idea&rsquo;s own strength, and we
+            are willing to let go of ideas that require buzzwords and hyperbole
+            to stand. Function over form.
           </p>
         </div>
 
-        <hr />
-
-        <div className="principle principle--amber">
-          <p className="principle__num">Principle 02</p>
-          <h2 className="principle__text">Say what&rsquo;s true, early.</h2>
-          <p className="principle__caption">
-            We believe in stating intentions or agenda clearly, and in
-            acknowledging mistakes made on either side of the conversation
-            directly.
+        <div className="feature-block feature-block--highlight">
+          <p className="feature-block__num">Principle 02</p>
+          <h2 className="feature-block__title">Blame doesn't ship code.</h2>
+          <p className="feature-block__body">
+            The only thing that blame generates is excuses. Changes and setbacks
+            are parts of the process, as is conflict.
           </p>
-          <p className="principle__caption">
-            We also believe setbacks and conflict are natural parts of any
-            process, and need to be surfaced early, so they can be addressed.
+          <p className="feature-block__body">
+            We believe in a pragmatic approach, where blame is stipped away in
+            communication, everyone speaks freely, and the focus stays on fixing
+            what's broken.
+          </p>
+        </div>
+
+        <div className="feature-block">
+          <p className="feature-block__num">Principle 03</p>
+          <h2 className="feature-block__title">Problems don't go away.</h2>
+          <p className="feature-block__body">
+            Wishful thinking is not a communication strategy. It only allows
+            issues to grow, whether it's in strategy, workflows, or rapport.
+          </p>
+          <p className="feature-block__body">
+            We believe in surfacing issues early, so they don't have time to
+            grow, fester, or compound. We state the problem clearly, early, and
+            without blame.
           </p>
         </div>
       </div>
 
+      <hr />
       <section className="section">
         <div className="shell">
           <h2>
-            We also believe a <em className="highlight">little bit of humor</em> is fine.
+            <em className="highlight">A little bit of humor</em> helps.
           </h2>
-          <p className="principle__caption">
-            That one isn&rsquo;t a principle. We just believe that the more
-            effort spent curating one&rsquo;s external persona, the less can be
-            spent on the task at hand. And that&rsquo;s quite a bit more
-            nonsense than zero.
+          <p className="feature-block__body">
+            That one isn&rsquo;t a principle. We just believe that it helps gain
+            perspective. We tend to think about things, especially difficult
+            things, logically. Humor, by definition, breaks logic, allowing us
+            to have a perspective we might miss on a normal train of thought.
           </p>
         </div>
       </section>

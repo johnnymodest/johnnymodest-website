@@ -38,7 +38,7 @@ export default function CaseStudyNav() {
   };
 
   return (
-    <nav className="cs-body__nav">
+    <nav className="article-layout__nav">
       <h5>On this page</h5>
       <ol>
         {sections.map((s, i) => (

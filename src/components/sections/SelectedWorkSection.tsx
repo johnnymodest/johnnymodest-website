@@ -48,22 +48,22 @@ export default async function SelectedWorkSection() {
           Selected Work
         </h2>
 
-        <div className="cs-list">
+        <div className="data-list data-list--clickable">
           {cases.map((c, i) => (
             <Link
               key={c.slug}
               href={`/case-studies/${c.slug}`}
-              className="cs-row"
+              className="data-list__row"
             >
-              <div className="cs-row__num">
+              <div className="data-list__num">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div className="cs-row__title">{c.title}</div>
-              <div className="cs-row__client">
+              <div className="data-list__title">{c.title}</div>
+              <div className="data-list__label">
                 {c.client.toUpperCase()} · {c.domain.toUpperCase()}
               </div>
-              <div className="cs-row__year">{c.year}</div>
-              <div className="cs-row__arrow">→</div>
+              <div className="data-list__year">{c.year}</div>
+              <div className="data-list__arrow">→</div>
             </Link>
           ))}
         </div>

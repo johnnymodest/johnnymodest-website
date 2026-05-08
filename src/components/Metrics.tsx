@@ -5,11 +5,11 @@ export interface MetricItem {
 
 export default function Metrics({ items }: { items: MetricItem[] }) {
   return (
-    <div className="metrics">
+    <div className="stat-grid">
       {items.map((m, i) => (
-        <div className="metric" key={i}>
-          <div className="metric__num">{m.value}</div>
-          <div className="metric__label">{m.label}</div>
+        <div className="stat-grid__item" key={i}>
+          <div className="stat-grid__num">{m.value}</div>
+          <div className="stat-grid__label">{m.label}</div>
         </div>
       ))}
     </div>

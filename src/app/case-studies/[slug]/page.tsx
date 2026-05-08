@@ -100,15 +100,23 @@ export default async function CaseStudyPage({
 
   return (
     <>
-      <section className="cs-hero">
+      <section
+        className="page-head page-head--border"
+        style={
+          {
+            "--ph-pad": "clamp(64px, 8vw, 120px)",
+            "--ph-pad-b": "clamp(48px, 6vw, 80px)",
+          } as React.CSSProperties
+        }
+      >
         <div className="shell">
-          <p className="cs-hero__crumb">
+          <p className="page-head__crumb">
             <Link href="/case-studies" className="amber-link">
               &larr; Case studies
             </Link>
           </p>
-          <h1 className="cs-hero__title">{fm.title}</h1>
-          <dl className="cs-hero__meta">
+          <h1 className="page-head__title page-head__title--case">{fm.title}</h1>
+          <dl className="page-head__meta-grid">
             <div>
               <dt>Client</dt>
               <dd>{fm.client}</dd>
@@ -131,9 +139,9 @@ export default async function CaseStudyPage({
 
       <section className="section section--tight">
         <div className="shell">
-          <div className="cs-body">
+          <div className="article-layout">
             <CaseStudyNav />
-            <div className="cs-body__content">
+            <div className="article-layout__content">
               <MDXRemote
                 source={body}
                 components={{
