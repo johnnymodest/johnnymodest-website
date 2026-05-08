@@ -15,35 +15,44 @@ interface BriefData {
 }
 
 export async function sendBrief(data: BriefData) {
-  const { error } = await resend.emails.send({
-    from: "hello@johnnymodest.com",
-    to: "hello@johnnymodest.com",
-    replyTo: data.email,
-    subject: `Brief from ${data.name || "someone"}`,
-    text: [
-      `Name: ${data.name || "—"}`,
-      `Email: ${data.email || "—"}`,
-      `Scope: ${data.scope || "—"}`,
-      `Timeline: ${data.timeline || "—"}`,
-      ``,
-      `Company / context:`,
-      `${data.context || "—"}`,
-      ``,
-      `What's stuck:`,
-      `${data.stuck || "—"}`,
-    ].join("\n"),
-  });
-
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  try {
-    await put(`briefs/${Date.now()}.json`, JSON.stringify(data, null, 2), {
+  const results = await Promise.allSettled([
+    resend.emails.send({
+      from: "hello@johnnymodest.com",
+      to: "hello@johnnymodest.com",
+      replyTo: data.email,
+      subject: `Brief from ${data.name || "someone"}`,
+      text: [
+        `Name: ${data.name || "—"}`,
+        `Email: ${data.email || "—"}`,
+        `Scope: ${data.scope || "—"}`,
+        `Timeline: ${data.timeline || "—"}`,
+        ``,
+        `Company / context:`,
+        `${data.context || "—"}`,
+        ``,
+        `What's stuck:`,
+        `${data.stuck || "—"}`,
+      ].join("\n"),
+    }),
+    put(`briefs/${Date.now()}.json`, JSON.stringify(data, null, 2), {
       access: "private",
       contentType: "application/json",
-    });
-  } catch (e) {
-    console.error("Failed to save brief to Vercel Blob:", e);
+    }),
+  ]);
+
+  const [emailResult, blobResult] = results;
+
+  if (emailResult.status === "rejected") {
+    console.error("Failed to send email:", emailResult.reason);
+  } else if (emailResult.value.error) {
+    console.error("Resend returned error:", emailResult.value.error);
+  }
+
+  if (blobResult.status === "rejected") {
+    console.error("Failed to save to Vercel Blob:", blobResult.reason);
+  }
+
+  if (emailResult.status === "rejected" && blobResult.status === "rejected") {
+    throw new Error("Failed to send brief. Please email hello@johnnymodest.com directly.");
   }
 }

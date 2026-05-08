@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <SliderSection />
       <ServicesSection />
+      <SliderSection />
       <RateSection />
       <DomainsSection />
       <SelectedWorkSection />
