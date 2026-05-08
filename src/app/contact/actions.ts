@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { put } from "@vercel/blob";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -35,5 +36,14 @@ export async function sendBrief(data: BriefData) {
 
   if (error) {
     throw new Error(error.message);
+  }
+
+  try {
+    await put(`briefs/${Date.now()}.json`, JSON.stringify(data, null, 2), {
+      access: "private",
+      contentType: "application/json",
+    });
+  } catch {
+    // BLOB_READ_WRITE_TOKEN not set — skip backup (e.g. local dev)
   }
 }

@@ -59,8 +59,8 @@ export default function AboutPage() {
                 </Link>
               </div>
               <p>
-                My background spans engineering, design, and business strategy.
-                I can read code, sketch flows, write copy, and build a financial
+                My background spans engineering, design, and product strategy. I
+                can read code, sketch flows, write copy, and build a revenue
                 model. I know which hat to wear and when to hand something off
                 to someone better.
               </p>

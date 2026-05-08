@@ -255,19 +255,22 @@ export default function ContactPage() {
                 {status === "error" && (
                   <p
                     style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 13,
+                      fontSize: 15,
                       color: "var(--muted)",
+                      lineHeight: 1.6,
                     }}
                   >
-                    Something went wrong.{" "}
+                    Something went wrong. It seems I&rsquo;ve prioritized a
+                    client engagement over maintaining my website. Please kindly
+                    reach out old-school, via{" "}
                     <a
                       href="mailto:hello@johnnymodest.com"
                       className="amber-link"
                       style={{ fontWeight: 500 }}
                     >
-                      Email me directly at hello@johnnymodest.com
+                      hello@johnnymodest.com
                     </a>
+                    . The fields above are still filled — copy, paste, send.
                   </p>
                 )}
 
