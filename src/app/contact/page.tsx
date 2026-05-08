@@ -1,31 +1,34 @@
-'use client';
+"use client";
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
+import { sendBrief } from "./actions";
 
 const SCOPE_OPTIONS = [
-  'One conversation',
-  'Short (2–4 weeks)',
-  'Full (6–14 weeks)',
-  'Not sure yet',
+  "One conversation",
+  "Short (2–4 weeks)",
+  "Full (6–14 weeks)",
+  "Not sure yet",
 ];
 
 const TIMELINE_OPTIONS = [
-  'Immediately',
-  'Next month',
-  'Next quarter',
-  'Just exploring',
+  "Immediately",
+  "Next month",
+  "Next quarter",
+  "Just exploring",
 ];
 
 export default function ContactPage() {
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    context: '',
-    stuck: '',
-    scope: '',
-    timeline: '',
+    name: "",
+    email: "",
+    context: "",
+    stuck: "",
+    scope: "",
+    timeline: "",
   });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,35 +41,20 @@ export default function ContactPage() {
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-      setStatus('sending');
-
-      const url = process.env.NEXT_PUBLIC_FORMSPREE_URL;
-      if (!url) {
-        setStatus('error');
-        return;
-      }
+      setStatus("sending");
 
       try {
-        const res = await fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            name: form.name,
-            email: form.email,
-            context: form.context,
-            stuck: form.stuck,
-            scope: form.scope,
-            timeline: form.timeline,
-          }),
+        await sendBrief({
+          name: form.name,
+          email: form.email,
+          context: form.context,
+          stuck: form.stuck,
+          scope: form.scope,
+          timeline: form.timeline,
         });
-
-        if (res.ok) {
-          setStatus('success');
-        } else {
-          setStatus('error');
-        }
+        setStatus("success");
       } catch {
-        setStatus('error');
+        setStatus("error");
       }
     },
     [form],
@@ -78,13 +66,13 @@ export default function ContactPage() {
       <section className="callout">
         <div className="shell">
           <h1 className="callout__title">
-            If something&rsquo;s stuck,
+            Something not quite right?
             <br />
-            let&rsquo;s talk about it.
+            Let&rsquo;s talk about it.
           </h1>
           <div className="callout__actions">
             <a href="#brief-form" className="btn">
-              Send a brief <span className="btn__arrow">&rarr;</span>
+              Start here <span className="btn__arrow">&rarr;</span>
             </a>
             <a href="mailto:hello@johnnymodest.com" className="btn btn--ghost">
               hello@johnnymodest.com
@@ -99,19 +87,27 @@ export default function ContactPage() {
           <div className="two-col two-col--wide-right">
             {/* Left — contact info */}
             <div className="two-col__aside">
-              <h2 className="lead">No gatekeepers. No templates. Just a human who reads every message.</h2>
+              <h2 className="lead">
+                No gatekeepers. No templates. Just a human who reads your
+                message.
+              </h2>
               <ul>
                 <li>
                   <span>EMAIL</span>
                   <span>
-                    <a href="mailto:hello@johnnymodest.com" className="amber-link">
+                    <a
+                      href="mailto:hello@johnnymodest.com"
+                      className="amber-link"
+                    >
                       hello@johnnymodest.com
                     </a>
                   </span>
                 </li>
                 <li>
                   <span>RESPONSE</span>
-                  <span>Within <b>2 business days</b></span>
+                  <span>
+                    Within <b>2 business days</b>
+                  </span>
                 </li>
                 <li>
                   <span>FORMAT</span>
@@ -125,49 +121,38 @@ export default function ContactPage() {
             </div>
 
             {/* Right — brief form */}
-            {status === 'success' ? (
+            {status === "success" ? (
               <div className="stack stack--lg" style={{ paddingTop: 8 }}>
-                <p className="lead" style={{ color: 'var(--amber-dark)' }}>
-                  Got it. I&rsquo;ll read this and reply within two business days.
+                <p className="lead" style={{ color: "var(--amber-dark)" }}>
+                  Got it. I&rsquo;ll read this and reply within two business
+                  days.
                 </p>
-                <p style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--muted)' }}>
+                <p
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: 14,
+                    color: "var(--muted)",
+                  }}
+                >
                   No automated response. No sales sequence. Just me.
                 </p>
               </div>
             ) : (
               <form className="form" onSubmit={handleSubmit} noValidate>
-                {/* Name + Email */}
-                <div className="field field--row">
-                  <div className="field">
-                    <label className="field__label" htmlFor="contact-name">
-                      Name
-                    </label>
-                    <input
-                      id="contact-name"
-                      className="field__input"
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      disabled={status === 'sending'}
-                    />
-                  </div>
-                  <div className="field">
-                    <label className="field__label" htmlFor="contact-email">
-                      Email
-                    </label>
-                    <input
-                      id="contact-email"
-                      className="field__input"
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      disabled={status === 'sending'}
-                    />
-                  </div>
+                {/* What's stuck */}
+                <div className="field">
+                  <label className="field__label" htmlFor="contact-stuck">
+                    What&rsquo;s stuck
+                  </label>
+                  <textarea
+                    id="contact-stuck"
+                    className="field__textarea"
+                    name="stuck"
+                    value={form.stuck}
+                    onChange={handleChange}
+                    required
+                    disabled={status === "sending"}
+                  />
                 </div>
 
                 {/* Company / context */}
@@ -182,24 +167,42 @@ export default function ContactPage() {
                     name="context"
                     value={form.context}
                     onChange={handleChange}
-                    disabled={status === 'sending'}
+                    disabled={status === "sending"}
                   />
                 </div>
 
-                {/* What's stuck */}
-                <div className="field">
-                  <label className="field__label" htmlFor="contact-stuck">
-                    What&rsquo;s stuck
-                  </label>
-                  <textarea
-                    id="contact-stuck"
-                    className="field__textarea"
-                    name="stuck"
-                    value={form.stuck}
-                    onChange={handleChange}
-                    required
-                    disabled={status === 'sending'}
-                  />
+                {/* Name + Email */}
+                <div className="field field--row">
+                  <div className="field">
+                    <label className="field__label" htmlFor="contact-name">
+                      Name
+                    </label>
+                    <input
+                      id="contact-name"
+                      className="field__input"
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      required
+                      disabled={status === "sending"}
+                    />
+                  </div>
+                  <div className="field">
+                    <label className="field__label" htmlFor="contact-email">
+                      Email
+                    </label>
+                    <input
+                      id="contact-email"
+                      className="field__input"
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      disabled={status === "sending"}
+                    />
+                  </div>
                 </div>
 
                 {/* Scope */}
@@ -210,11 +213,14 @@ export default function ContactPage() {
                       <button
                         key={opt}
                         type="button"
-                        className={`scope-pill${form.scope === opt ? ' is-active' : ''}`}
+                        className={`scope-pill${form.scope === opt ? " is-active" : ""}`}
                         onClick={() =>
-                          setForm((prev) => ({ ...prev, scope: prev.scope === opt ? '' : opt }))
+                          setForm((prev) => ({
+                            ...prev,
+                            scope: prev.scope === opt ? "" : opt,
+                          }))
                         }
-                        disabled={status === 'sending'}
+                        disabled={status === "sending"}
                       >
                         {opt}
                       </button>
@@ -230,11 +236,14 @@ export default function ContactPage() {
                       <button
                         key={opt}
                         type="button"
-                        className={`scope-pill${form.timeline === opt ? ' is-active' : ''}`}
+                        className={`scope-pill${form.timeline === opt ? " is-active" : ""}`}
                         onClick={() =>
-                          setForm((prev) => ({ ...prev, timeline: prev.timeline === opt ? '' : opt }))
+                          setForm((prev) => ({
+                            ...prev,
+                            timeline: prev.timeline === opt ? "" : opt,
+                          }))
                         }
-                        disabled={status === 'sending'}
+                        disabled={status === "sending"}
                       >
                         {opt}
                       </button>
@@ -243,10 +252,20 @@ export default function ContactPage() {
                 </div>
 
                 {/* Error message */}
-                {status === 'error' && (
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--muted)' }}>
-                    Something went wrong.{' '}
-                    <a href="mailto:hello@johnnymodest.com" className="amber-link" style={{ fontWeight: 500 }}>
+                {status === "error" && (
+                  <p
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 13,
+                      color: "var(--muted)",
+                    }}
+                  >
+                    Something went wrong.{" "}
+                    <a
+                      href="mailto:hello@johnnymodest.com"
+                      className="amber-link"
+                      style={{ fontWeight: 500 }}
+                    >
                       Email me directly at hello@johnnymodest.com
                     </a>
                   </p>
@@ -257,10 +276,10 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     className="btn btn--amber"
-                    style={{ width: '100%' }}
-                    disabled={status === 'sending'}
+                    style={{ width: "100%" }}
+                    disabled={status === "sending"}
                   >
-                    {status === 'sending' ? 'Sending…' : 'Send the brief →'}
+                    {status === "sending" ? "Sending…" : "Send the brief →"}
                   </button>
                 </div>
               </form>
@@ -273,37 +292,74 @@ export default function ContactPage() {
       <section className="section section--tight">
         <div className="shell">
           <hr className="rule rule-thick" />
-          <div style={{ paddingTop: 'clamp(40px, 5vw, 64px)' }}>
+          <div style={{ paddingTop: "clamp(40px, 5vw, 64px)" }}>
             <p className="eyebrow">FOR CLARITY</p>
-            <h2 style={{ maxWidth: '20ch', marginTop: 16 }}>
+            <h2 style={{ maxWidth: "20ch", marginTop: 16 }}>
               What I won&rsquo;t do
             </h2>
             <ul
               style={{
-                listStyle: 'none',
+                listStyle: "none",
                 padding: 0,
-                margin: 'clamp(24px, 3vw, 40px) 0 0',
-                display: 'grid',
+                margin: "clamp(24px, 3vw, 40px) 0 0",
+                display: "grid",
                 gap: 16,
-                maxWidth: '56ch',
+                maxWidth: "56ch",
               }}
             >
-              <li style={{ fontSize: 18, display: 'flex', gap: 14, alignItems: 'baseline' }}>
-                <span style={{ color: 'var(--muted)', flexShrink: 0 }}>&mdash;</span>
+              <li
+                style={{
+                  fontSize: 18,
+                  display: "flex",
+                  gap: 14,
+                  alignItems: "baseline",
+                }}
+              >
+                <span style={{ color: "var(--muted)", flexShrink: 0 }}>
+                  &mdash;
+                </span>
                 <span>Retainers with no defined outcome</span>
               </li>
-              <li style={{ fontSize: 18, display: 'flex', gap: 14, alignItems: 'baseline' }}>
-                <span style={{ color: 'var(--muted)', flexShrink: 0 }}>&mdash;</span>
+              <li
+                style={{
+                  fontSize: 18,
+                  display: "flex",
+                  gap: 14,
+                  alignItems: "baseline",
+                }}
+              >
+                <span style={{ color: "var(--muted)", flexShrink: 0 }}>
+                  &mdash;
+                </span>
                 <span>Equity-only arrangements</span>
               </li>
-              <li style={{ fontSize: 18, display: 'flex', gap: 14, alignItems: 'baseline' }}>
-                <span style={{ color: 'var(--muted)', flexShrink: 0 }}>&mdash;</span>
+              <li
+                style={{
+                  fontSize: 18,
+                  display: "flex",
+                  gap: 14,
+                  alignItems: "baseline",
+                }}
+              >
+                <span style={{ color: "var(--muted)", flexShrink: 0 }}>
+                  &mdash;
+                </span>
                 <span>NDA-before-conversation requests</span>
               </li>
-              <li style={{ fontSize: 18, display: 'flex', gap: 14, alignItems: 'baseline' }}>
-                <span style={{ color: 'var(--muted)', flexShrink: 0 }}>&mdash;</span>
+              <li
+                style={{
+                  fontSize: 18,
+                  display: "flex",
+                  gap: 14,
+                  alignItems: "baseline",
+                }}
+              >
+                <span style={{ color: "var(--muted)", flexShrink: 0 }}>
+                  &mdash;
+                </span>
                 <span>
-                  Work that requires me to pretend I&rsquo;m more than one person
+                  Work that requires me to pretend I&rsquo;m more than one
+                  person
                 </span>
               </li>
             </ul>
