@@ -43,7 +43,7 @@ export async function sendBrief(data: BriefData) {
       access: "private",
       contentType: "application/json",
     });
-  } catch {
-    // BLOB_READ_WRITE_TOKEN not set — skip backup (e.g. local dev)
+  } catch (e) {
+    console.error("Failed to save brief to Vercel Blob:", e);
   }
 }
