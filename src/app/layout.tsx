@@ -44,6 +44,9 @@ export default function RootLayout({
         } as React.CSSProperties
       }
     >
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Johnny Modest" />
+      </head>
       <body>
         <Nav />
         <PageTransition>
