@@ -126,14 +126,14 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
     <div>
       <div ref={sliderRef} className="compare">
         {/* Before panel */}
-        <div className="compare__panel compare__panel--before">
+        <div className="compare__panel compare__panel--left">
           <span className="compare__label">BEFORE</span>
           <p className="compare__text">{pair.before}</p>
           <span className="eyebrow compare__context">{pair.context}</span>
         </div>
 
         {/* After panel */}
-        <div className="compare__panel compare__panel--after">
+        <div className="compare__panel compare__panel--right">
           <span className="compare__label">AFTER</span>
           <p className="compare__text">{pair.after}</p>
           <span className="eyebrow compare__context">{pair.context}</span>
