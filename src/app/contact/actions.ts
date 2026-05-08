@@ -18,7 +18,7 @@ export async function sendBrief(data: BriefData) {
   const results = await Promise.allSettled([
     resend.emails.send({
       from: "hello@johnnymodest.com",
-      to: "hello@johnnymodest.com",
+      to: ["tudor@johnnymodest.com", "tudormarciu@gmail.com"],
       replyTo: data.email,
       subject: `Brief from ${data.name || "someone"}`,
       text: [
