@@ -17,7 +17,7 @@ export default function HeroSection() {
       <div className="shell">
         <div className="page-head__inner">
           <h1 className="page-head__title">
-            <TypewriterText />
+            <TypewriterText words={["Build", "Fix", "Ship"]} /> it.
             <br />
             <em className="highlight">Zero-nonsense</em>{" "}
             Product leadership.

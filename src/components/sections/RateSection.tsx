@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function RateSection() {
   return (
     <section className="stat-banner">
@@ -14,6 +16,13 @@ export default function RateSection() {
               done right.
             </p>
             <p>Two-week minimum. Most engagements run 6–14 weeks.</p>
+            <Link
+              href="/contact"
+              className="sticky-bar__cta"
+              style={{ marginTop: "clamp(24px, 3vw, 40px)" }}
+            >
+              Let's go &rarr;
+            </Link>
           </div>
         </div>
       </div>

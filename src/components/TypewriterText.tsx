@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-const WORDS = ["Build", "Fix", "Ship"];
 const TYPE_MS = 90;
 const DELETE_MS = 60;
 const PAUSE_TYPED = 1800;
@@ -10,13 +9,19 @@ const PAUSE_DELETED = 350;
 
 type Phase = "typing" | "pausing-typed" | "deleting" | "pausing-deleted";
 
-export default function TypewriterText() {
+interface TypewriterTextProps {
+  words?: string[];
+}
+
+export default function TypewriterText({
+  words = ["Build", "Fix", "Ship"],
+}: TypewriterTextProps) {
   const [wordIdx, setWordIdx] = useState(0);
   const [text, setText] = useState("");
   const [phase, setPhase] = useState<Phase>("typing");
   const [blink, setBlink] = useState(true);
 
-  const currentWord = WORDS[wordIdx];
+  const currentWord = words[wordIdx];
 
   useEffect(() => {
     if (phase === "typing") {
@@ -47,7 +52,7 @@ export default function TypewriterText() {
 
     if (phase === "pausing-deleted") {
       const t = setTimeout(() => {
-        setWordIdx((wordIdx + 1) % WORDS.length);
+        setWordIdx((wordIdx + 1) % words.length);
         setPhase("typing");
       }, PAUSE_DELETED);
       return () => clearTimeout(t);
@@ -77,7 +82,6 @@ export default function TypewriterText() {
       >
         |
       </span>
-      it.
     </>
   );
 }

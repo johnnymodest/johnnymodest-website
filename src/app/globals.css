@@ -713,6 +713,7 @@ p {
   align-items: end;
 }
 .stat-banner__num {
+  align-self: center;
   font-family: var(--font-display);
   font-size: clamp(96px, 16vw, 220px);
   line-height: 0.85;

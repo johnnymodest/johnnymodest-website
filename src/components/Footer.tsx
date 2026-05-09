@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { getNextQuarter } from '@/lib/utils';
+import Link from "next/link";
+import { getNextQuarter } from "@/lib/utils";
 
 export default function Footer() {
   const nextQuarter = getNextQuarter();
@@ -50,8 +50,7 @@ export default function Footer() {
               <span className="site-header__wordmark">Johnny Modest</span>
             </Link>
             <p>
-              Senior product leadership for teams that need someone to see what
-              they can&apos;t see from the inside. Based in Bucharest. Working
+              Senior product leadership for teams that want to ship. Working
               globally.
             </p>
           </div>
@@ -59,19 +58,52 @@ export default function Footer() {
           <div className="site-footer__col">
             <h5>Site</h5>
             <ul>
-              <li><Link href="/" className="amber-link">Home</Link></li>
-              <li><Link href="/zero-nonsense" className="amber-link">Zero nonsense</Link></li>
-              <li><Link href="/case-studies" className="amber-link">Case studies</Link></li>
-              <li><Link href="/about" className="amber-link">About</Link></li>
+              <li>
+                <Link href="/" className="amber-link">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/zero-nonsense" className="amber-link">
+                  Zero nonsense
+                </Link>
+              </li>
+              <li>
+                <Link href="/case-studies" className="amber-link">
+                  Case studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="amber-link">
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div className="site-footer__col">
             <h5>Direct</h5>
             <ul>
-              <li><a href="mailto:hello@johnnymodest.com" className="amber-link">hello@johnnymodest.com</a></li>
-              <li><Link href="/contact" className="amber-link">Brief form</Link></li>
-              <li><a href="https://linkedin.com/in/johnnymodest" target="_blank" rel="noopener noreferrer" className="amber-link">LinkedIn ↗</a></li>
+              <li>
+                <a href="mailto:hello@johnnymodest.com" className="amber-link">
+                  hello@johnnymodest.com
+                </a>
+              </li>
+              <li>
+                <Link href="/contact" className="amber-link">
+                  Brief form
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/in/johnnymodest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="amber-link"
+                >
+                  LinkedIn ↗
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -86,7 +118,9 @@ export default function Footer() {
         </div>
 
         <div className="site-footer__base">
-          <span>&copy; {new Date().getFullYear()} Johnny Modest Consultancy</span>
+          <span>
+            &copy; {new Date().getFullYear()} Johnny Modest Consultancy
+          </span>
           <span>No packages. No theater. No buzzwords.</span>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CtaSection from "@/components/sections/CtaSection";
 import DomainsSection from "@/components/sections/DomainsSection";
+import TypewriterText from "@/components/TypewriterText";
 
 export const metadata: Metadata = {
   title: "About — Johnny Modest",
@@ -22,8 +23,23 @@ export default function AboutPage() {
       >
         <div className="shell">
           <h1>
-            You hire me because I&rsquo;ll see things your team can&rsquo;t see{" "}
-            <em className="highlight">from the inside.</em>
+            I&rsquo;m Tudor. <br></br>
+            <em className="highlight">
+              I{" "}
+              <TypewriterText
+                words={[
+                  "solve problems",
+                  "ask hard questions",
+                  "speak business",
+                  "speak engineering",
+                  "lead teams",
+                  "ship products",
+                  "build systems",
+                ]}
+              />
+              .
+            </em>{" "}
+            <br></br>I call it product leadership.
           </h1>
         </div>
       </section>
