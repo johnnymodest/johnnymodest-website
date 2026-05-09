@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CtaSection from "@/components/sections/CtaSection";
 import DomainsSection from "@/components/sections/DomainsSection";
@@ -31,7 +32,15 @@ export default function AboutPage() {
         <div className="shell">
           <div className="two-col">
             <div className="stack">
-              <img src={"content/tudor-photo-office-setting.png"}></img>
+              <Image
+                src="/content/tudor-photo-office-setting.png"
+                alt="Tudor in his office"
+                width={1792}
+                height={2390}
+                preload
+                sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ width: "100%", height: "auto" }}
+              />
               <p className="lead">
                 <b>
                   I'm Tudor. I parachute into product orgs, read the room, fix
