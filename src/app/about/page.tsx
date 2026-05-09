@@ -29,9 +29,9 @@ export default function AboutPage() {
               <TypewriterText
                 words={[
                   "solve problems",
-                  "ask hard questions",
-                  "speak business",
-                  "speak engineering",
+                  "ask questions",
+                  "know business",
+                  "know engineering",
                   "lead teams",
                   "ship products",
                   "build systems",
