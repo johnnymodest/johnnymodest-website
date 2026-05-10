@@ -471,6 +471,7 @@ p {
   height: 6px;
   border-radius: 50%;
   background: var(--amber);
+  animation: pulse 1.6s infinite;
 }
 
 /* before/after comparison ---------------------------------------------- */
@@ -929,6 +930,62 @@ p {
   .sticky-bar__copy span:not(.dot) {
     display: none;
   }
+}
+
+/* principle row (side-by-side layout) ----------------------------------- */
+.principle-row {
+  padding: clamp(40px, 6vw, 80px) 0;
+}
+.principle-row__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+  margin-top: 28px;
+}
+@media (max-width: 880px) {
+  .principle-row__body {
+    grid-template-columns: 1fr;
+  }
+}
+.principle-row .feature-block__body {
+  margin-top: 0;
+}
+.principle-row .feature-block__body + .feature-block__body {
+  margin-top: 16px;
+}
+
+.principle-row--highlight {
+  background: var(--amber);
+  color: var(--amber-text);
+  margin: 0 calc(var(--gutter) * -1);
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  border-color: var(--amber-dark);
+}
+.principle-row--highlight .feature-block__num {
+  color: var(--amber-text);
+  opacity: 0.7;
+}
+.principle-row--highlight .feature-block__body {
+  color: var(--amber-text);
+  opacity: 0.85;
+}
+.principle-row--highlight .feature-block__title em {
+  color: var(--amber-text);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+}
+
+/* inverted slider panels on zero-nonsense page ------- */
+.principle-row .compare__panel--left {
+  background: var(--amber);
+  color: var(--amber-text);
+}
+.principle-row .compare__panel--right {
+  background: var(--paper);
+  color: inherit;
 }
 
 /* feature block (principles) ------------------------------------------- */

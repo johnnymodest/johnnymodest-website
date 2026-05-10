@@ -124,6 +124,31 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
 
   return (
     <div>
+      {/* Navigation */}
+      <div className="compare__nav">
+        <div className="compare__counter">
+          {String(currentIndex + 1).padStart(2, "0")} /{" "}
+          {String(total).padStart(2, "0")} &middot; Drag to translate
+        </div>
+        <div className="compare__arrows">
+          <button
+            className="compare__arrow"
+            onClick={goPrev}
+            disabled={!canGoPrev}
+            aria-label="Previous pair"
+          >
+            &larr;
+          </button>
+          <button
+            className="compare__arrow"
+            onClick={goNext}
+            disabled={!canGoNext}
+            aria-label="Next pair"
+          >
+            &rarr;
+          </button>
+        </div>
+      </div>
       <div ref={sliderRef} className="compare">
         {/* Before panel */}
         <div className="compare__panel compare__panel--left">
@@ -158,32 +183,6 @@ export default function BeforeAfterSlider({ pairs }: BeforeAfterSliderProps) {
               <polyline points="16,5 21,12 16,19" />
             </svg>
           </div>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="compare__nav">
-        <div className="compare__counter">
-          {String(currentIndex + 1).padStart(2, "0")} /{" "}
-          {String(total).padStart(2, "0")} &middot; Drag to translate
-        </div>
-        <div className="compare__arrows">
-          <button
-            className="compare__arrow"
-            onClick={goPrev}
-            disabled={!canGoPrev}
-            aria-label="Previous pair"
-          >
-            &larr;
-          </button>
-          <button
-            className="compare__arrow"
-            onClick={goNext}
-            disabled={!canGoNext}
-            aria-label="Next pair"
-          >
-            &rarr;
-          </button>
         </div>
       </div>
     </div>

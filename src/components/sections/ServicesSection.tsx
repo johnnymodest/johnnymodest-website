@@ -10,7 +10,7 @@ export default function ServicesSection() {
         >
           <h2>
             What you need<br></br>
-            comes in <em>three buckets.</em>
+            comes in <em className="highlight">three buckets.</em>
           </h2>
         </div>
 
