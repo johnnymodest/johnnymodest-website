@@ -5,6 +5,7 @@ import SliderSection from "@/components/sections/SliderSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import RateSection from "@/components/sections/RateSection";
 import SelectedWorkSection from "@/components/sections/SelectedWorkSection";
+import StickyBar from "@/components/StickyBar";
 
 export const metadata: Metadata = {
   title: "Johnny Modest — Zero-nonsense product consulting",
@@ -21,6 +22,7 @@ export default function Home() {
       <RateSection />
       <DomainsSection />
       <SelectedWorkSection />
+      <StickyBar />
     </>
   );
 }

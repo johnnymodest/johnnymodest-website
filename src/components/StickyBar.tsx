@@ -51,7 +51,7 @@ export default function StickyBar() {
     sessionStorage.setItem("sticky-bar-dismissed", "1");
   }, []);
 
-  if (pathname === "/" || pathname === "/contact") return null;
+  if (pathname === "/contact") return null;
 
   const copy = COPY[pathname];
 
