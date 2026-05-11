@@ -1,31 +1,92 @@
-const domains = [
-  "01 Developer tools",
-  "02 B2B SaaS",
-  "03 Marketplaces",
-  "04 Academic media",
-  "05 Edtech",
-  "06 Fintech (consumer)",
-  "07 Agriculture",
-  "08 Email infrastructure",
-  "09 Logistics",
-  "10 Subscription products",
-  "11 Vertical AI",
-  "12 Internal platforms",
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+const DOMAINS = [
+  "Ad tech",
+  "B2B SaaS",
+  "B2C SaaS",
+  "Developer tools",
+  "Email delivery",
+  "Document management",
+  "Agriculture",
+  "Pharma",
+  "Fintech & retail trading",
+  "Customer support software",
+  "Residential & Community",
+  "Telecom",
+  "HR & L&D",
+  "Academic media",
+  "Regulated industries",
 ];
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function DomainsSection() {
+  const [domains, setDomains] = useState(DOMAINS);
+  const [delays, setDelays] = useState<number[]>([]);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const [primed, setPrimed] = useState(false);
+
+  // Shuffle + generate delays only on the client to avoid SSR hydration mismatch
+  useEffect(() => {
+    const shuffled = shuffle(DOMAINS);
+    setDomains(shuffled);
+    setDelays(shuffled.map(() => Math.random() * 0.6));
+  }, []);
+
+  // Initial pause before cells are allowed to appear
+  useEffect(() => {
+    const t = setTimeout(() => setPrimed(true), 400);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section className="section">
       <div className="shell">
         <h2>Domains I&rsquo;ve worked in</h2>
 
-        <div className="tag-grid">
-          {domains.map((d) => {
-            const [num, ...rest] = d.split(" ");
+        <div ref={gridRef} className="tag-grid">
+          {domains.map((d, i) => {
+            const num = String(i + 1).padStart(2, "0");
             return (
-              <div key={num} className="tag-grid__item">
+              <div
+                key={num}
+                className="tag-grid__item"
+                style={{
+                  opacity: visible && primed ? 1 : 0,
+                  transform:
+                    visible && primed ? "translateY(0)" : "translateY(8px)",
+                  transition: `opacity 0.5s ease, transform 0.5s ease`,
+                  transitionDelay: visible && primed ? `${delays[i]}s` : "0s",
+                }}
+              >
                 <span className="tag-grid__num">{num}</span>
-                {rest.join(" ")}
+                {d}
               </div>
             );
           })}
@@ -38,9 +99,9 @@ export default function DomainsSection() {
           }}
         >
           <p>
-            If your industry isn't on this list, that's not a disqualifier. Tell
-            me about it — I have enough experience to see patterns across
-            domains.
+            I've worked in enough industries to know that most problems look
+            familiar once you strip the jargon. And I enjoy the challenge of
+            solving the ones that don't.
           </p>
         </div>
       </div>
