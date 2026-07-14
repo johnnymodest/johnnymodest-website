@@ -1,6 +1,7 @@
 {
   "name": "johnny-modest-website",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "runArgs": ["--name", "johnny-modest-website"],
 
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
