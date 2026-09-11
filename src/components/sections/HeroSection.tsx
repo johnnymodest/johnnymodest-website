@@ -37,7 +37,7 @@ export default function HeroSection() {
               <Link href="/contact" className="tag tag--amber">
                 <span className="tag__dot" /> BOOKING {nextQuarter}
               </Link>
-              <span className="tag">FROM $80/HR</span>
+              <span className="tag">FROM $180/HR</span>
               <span className="tag">REMOTE · EEST</span>
             </div>
           </div>
