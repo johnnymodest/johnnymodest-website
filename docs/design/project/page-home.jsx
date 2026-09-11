@@ -65,7 +65,7 @@ function HomePage({ tweaks }) {
             <p className="lead">{v.lead}</p>
             <div className="hero__meta">
               <span className="tag tag--amber"><span className="tag__dot" />Booking Q3</span>
-              <span className="tag">From $80/hr</span>
+              <span className="tag">From $180/hr</span>
               <span className="tag">Remote · Bucharest</span>
             </div>
           </div>
@@ -122,7 +122,7 @@ function HomePage({ tweaks }) {
           <div className="rate__grid">
             <div>
               <div className="eyebrow" style={{ marginBottom: 24, color: "rgba(255,255,255,0.5)" }}>Rate, plainly</div>
-              <div className="rate__num">$80<span>/hr</span></div>
+              <div className="rate__num">$180<span>/hr</span></div>
             </div>
             <div className="rate__notes">
               <p><b>Starting rate.</b> Shorter or more urgent engagements cost more. That's not punishment, it's calendar math.</p>

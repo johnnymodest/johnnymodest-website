@@ -30,7 +30,7 @@ Rebuild of johnnymodest.com as a Next.js site. The goal is a clean, direct, dist
 
 ## Pricing & engagement
 
-- Rates start at **$80/hr**
+- Rates start at **$180/hr**
 - Shorter or more urgent engagements cost more
 - Longer committed engagements may be negotiated down
 - Scope changes are welcome — they need dedicated time and resources to be done right (this is stated clearly, not hidden in small print)

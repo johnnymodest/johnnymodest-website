@@ -15,7 +15,7 @@ Add `metadata` exports (Next.js App Router) to each page:
 
 | Page           | Title                                            | Description                                                                                                 |
 | -------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
-| Home           | Johnny Modest — Zero-nonsense product consulting | Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $80/hr. |
+| Home           | Johnny Modest — Zero-nonsense product consulting | Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $180/hr. |
 | Zero Nonsense  | Zero Nonsense — Johnny Modest                    | What we believe, in plain language.                                                                         |
 | Case Studies   | Case Studies — Johnny Modest                     | Selected work, told plainly.                                                                                |
 | About          | About — Johnny Modest                            | Cross-domain pattern recognition.                                                                           |

@@ -10,7 +10,7 @@ import StickyBar from "@/components/StickyBar";
 export const metadata: Metadata = {
   title: "Johnny Modest — Zero-nonsense product consulting",
   description:
-    "Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $80/hr.",
+    "Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $180/hr.",
 };
 
 export default function Home() {

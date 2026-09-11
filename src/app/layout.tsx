@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: "Johnny Modest — Zero-nonsense product consulting",
   },
   description:
-    "Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $80/hr.",
+    "Senior product leadership. I parachute in, fix the thing, and leave before I become furniture. From $180/hr.",
   metadataBase: new URL("https://johnnymodest.com"),
 };
 

@@ -110,7 +110,7 @@ export default function Footer() {
           <div className="site-footer__col">
             <h5>Engagement</h5>
             <ul>
-              <li>Rates from $80/hr</li>
+              <li>Rates from $180/hr</li>
               <li>2 week minimum</li>
               <li>Currently booking {nextQuarter}</li>
             </ul>
