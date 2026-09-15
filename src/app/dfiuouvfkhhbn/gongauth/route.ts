@@ -22,9 +22,16 @@ const HTML = `<!DOCTYPE html>
   // (see McpOAuthCallback in the opencode source). Since this page's own URL
   // has no explicit port and uses https, that parsing defaults to port 443
   // (https's default port) -- NOT 19876, which only applies when redirectUri
-  // is left unset entirely. If oauth.redirectUri in opencode.json ever
-  // changes to a URL with an explicit port, update CALLBACK_PORT to match.
-  var CALLBACK_PORT = 443;
+  // is left unset entirely.
+  //
+  // OpenCode runs inside a devcontainer/Codespace, so its 127.0.0.1:443
+  // listener is only reachable from a browser on a different machine via a
+  // manually forwarded port (VS Code PORTS panel -> Forward a Port -> 443).
+  // That forward gets an arbitrary LOCAL port assigned each time (443 is
+  // privileged, so it can't just bind the same number locally) -- check the
+  // PORTS panel's "Local Address" for the current value and update the
+  // number below to match before each fresh authorization attempt.
+  var CALLBACK_PORT = 54529;
 
   // Mirrors this page's own path rather than hardcoding it, since OpenCode
   // derives the expected local path the same way (from the redirectUri's
