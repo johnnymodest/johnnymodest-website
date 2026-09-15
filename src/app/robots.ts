@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: ["/dfiuouvfkhhbn/"],
     },
     sitemap: "https://johnnymodest.com/sitemap.xml",
   };
